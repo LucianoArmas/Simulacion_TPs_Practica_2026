@@ -1,3 +1,15 @@
+"""
+TP1.1 - Simulación de la Ruleta
+---------------------------------
+Integrantes:
+- Tomás Lardizábal, legajo 47433
+- Iñaki Díaz, legajo 48944
+- Tomás Splivalo, legajo 51665
+- Luciano Armas, legajo 47181
+"""
+
+
+
 import argparse
 import random
 import matplotlib.pyplot as plt
@@ -111,8 +123,8 @@ def main():
 
     # Valores Teóricos
     teoricos = [1/37, 18, np.var(np.arange(37)), np.std(np.arange(37))]
-    nombres = [("Frecuencia Relativa", "fr"), ("Valor Promedio", "vp"), ("Varianza", "vv"), ("Desvío Estándar", "vd")]
-
+    nombres = [("Frecuencia Relativa", "fr (frecuencia relativa)"), ("Esperanza Matemática", "vp (valor promedio)"), ("Varianza", "vv (valor de la varianza)"), ("Desvío Estándar", "vd (valor del desvío)")]
+    
     # --- FIGURA 1: CORRIDAS INDIVIDUALES (4 Gráficas) ---
     fig1, axs1 = plt.subplots(2, 2, figsize=(15, 10))
     fig1.suptitle('Resultados por Corrida Individual', fontsize=16)

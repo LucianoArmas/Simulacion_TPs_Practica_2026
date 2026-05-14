@@ -1,2 +1,4 @@
 *.pdf
 !SIMULACIÓN_2026_TP*
+imgs
+*md
