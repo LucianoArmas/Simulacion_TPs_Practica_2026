@@ -1,15 +1,17 @@
-import random, argparse, matplotlib.pyplot as plt
+"""
+TP1.2 - Estudio Económico-Matemático de Apuestas en la Ruleta
+---------------------------------
+Integrantes:
+- Tomás Lardizábal, legajo 47433
+- Iñaki Díaz, legajo 48944
+- Tomás Splivalo, legajo 51665
+- Luciano Armas, legajo 47181
+"""
 
-apuesta_inicial = 1
+import random, argparse, matplotlib.pyplot as plt, traceback
 
-# def graficar_frecuencia_relativa(fr_obtenida):
-#     fr_esperada = 1/37 
-#     plt.figure(figsize=(8, 5))
-#     plt.bar(['Simulada (frsa)', 'Teórica'], [fr_obtenida, fr_esperada], color=['blue', 'gray'])
-#     plt.axhline(y=fr_esperada, color='red', linestyle='--') # Línea de referencia
-#     plt.ylabel('Frecuencia Relativa')
-#     plt.title('Frecuencia Relativa de obtener la apuesta favorable')
-#     plt.show()
+apuesta_inicial = 5
+
 
 # --- FUNCIONES DE GRAFICACIÓN ---
 
@@ -82,7 +84,6 @@ def graficar_multiples_corridas(lista_de_historiales, capital_inicial):
 
 # --- ESTRATEGIAS DE APUESTA ---
 
-
 def estrategia_martingala_invertida(ultima_apuesta, is_win, capital):
     if is_win:
         capital += ultima_apuesta * 35
@@ -99,7 +100,8 @@ def estrategia_martingala(ultima_apuesta, is_win, capital):
         proxima_apuesta = apuesta_inicial
     else:
         capital -= ultima_apuesta
-        proxima_apuesta = ultima_apuesta * 2
+        # Limitar la apuesta para evitar que el programa explote y simular límite de mesa
+        proxima_apuesta = min(ultima_apuesta * 2, 10**12)
     return proxima_apuesta, capital
 
 
@@ -131,6 +133,8 @@ def estrategia_fibonacci(is_win, capital, apuesta_actual, indice, serie):
         while nuevo_indice >= len(serie):
             serie.append(serie[-1] + serie[-2])
 
+    # Limitar índice para evitar números gigantescos
+    if nuevo_indice > 100: nuevo_indice = 100 
     proxima_apuesta = serie[nuevo_indice]
     return proxima_apuesta, capital, nuevo_indice, serie
 
@@ -143,7 +147,7 @@ def ejecutar_simulacion(args):
   frecuencias_finales = []
   todas_las_corridas_fr = []
   
-  capital_inicial = 1000 if args.capital == 'f' else 10000000000
+  capital_inicial = 100000 if args.capital == 'f' else 0
   
   for i in range(args.corridas):
     capital = capital_inicial
@@ -160,11 +164,11 @@ def ejecutar_simulacion(args):
       
       if args.capital == "f" and capital < apuesta_actual:
         # Bancarrota
-        historial_capital.extend([0] * (args.tiradas - len(historial_capital) + 1))
+        # historial_capital.extend([0] * (args.tiradas - len(historial_capital) + 1))
         
-        # Para que la frecuencia no se rompa tras la bancarrota, mantenemos el último valor
-        ultima_fr = aciertos / (t-1) if t > 1 else 0
-        historial_fr.extend([ultima_fr] * (args.tiradas - len(historial_fr)))
+        # # Para que la frecuencia no se rompa tras la bancarrota, mantenemos el último valor
+        # ultima_fr = aciertos / (t-1) if t > 1 else 0
+        # historial_fr.extend([ultima_fr] * (args.tiradas - len(historial_fr)))
         
         break
       
@@ -216,37 +220,54 @@ def get_args():
 
 
 def main():
-  args = get_args()
-  
-  # 1. Correr la simulación y obtener datos
-  datos_capital, datos_frecuencias = ejecutar_simulacion(args)
+  try:
+    args = get_args()
 
-  # 2. Definir capital inicial para los gráficos
-  cap_init = 1000 if args.capital == 'f' else 10000000000
+    # 1. Correr la simulación y obtener datos
+    datos_capital, datos_frecuencias = ejecutar_simulacion(args)
 
-  # 3. Graficar resultados
-  
-  # Gráfico 1: Frecuencia Relativa (puedes usar el promedio de todas las corridas)
-  # fr_promedio = sum(datos_frecuencias) / len(datos_frecuencias)
-  # graficar_frecuencia_relativa(fr_promedio)
-  
-  graficar_frecuencia_relativa_evolucion(datos_frecuencias[0])
-  
-  
-  # Gráfico 2: Flujo de Caja (solo de la primera corrida para que sea legible)
-  graficar_flujo_caja(datos_capital[0], cap_init)
-  
-  # Gráfico 3: Multiples Corridas (todas juntas)
-  graficar_multiples_corridas(datos_capital, cap_init)
-  
-  # Gráfico 4: Grafico de Frecuencias Simultáneas
-  graficar_frecuencias_multiples(datos_frecuencias)
-  
+    # 2. Definir capital inicial para los gráficos
+    cap_init = 100000 if args.capital == 'f' else 0
+
+    # 3. Graficar resultados
+
+    # Gráfico 1: Frecuencia Relativa 
+    graficar_frecuencia_relativa_evolucion(datos_frecuencias[0])
+
+    # Gráfico 2: Flujo de Caja (solo de la primera corrida para que sea legible)
+    graficar_flujo_caja(datos_capital[0], cap_init)
+
+    # Gráfico 3: Multiples Corridas (todas juntas)
+    graficar_multiples_corridas(datos_capital, cap_init)
+
+    # Gráfico 4: Grafico de Frecuencias Simultáneas
+    graficar_frecuencias_multiples(datos_frecuencias)
+
+  except Exception as e:
+    print(f"Error: {e}")
+    print("Traceback:")
+    traceback.print_exc()
+    
 
 
 if __name__ == "__main__":
     main()
 
 # parametro de ejemplo para ejecutar el programa:
-# python ruleta.py -c 10000 -n 11 -e 1 -s 'd' -a 'f'
+# python ruleta.py -c 10000 -n 11 -e 5 -s 'd' -a 'f'
+
 # c: cantidad giros de ruleta, n: número elegido, e: cantidad de corridas a graficar, s: estrategia a utilizar, a: tipo de capital
+
+# s: 'd' para D'Alembert, 'f' para Fibonacci, 'm' para Martingala, 'o' para Martingala Invertida
+# a: 'f' para capital finito, 'i' para capital infinito
+
+
+# ESTRATEGIA | CAPITAL  | GRAFICA
+# D'Alembert   | Infinito | Un espectaculo
+# D'Alembert   | Finito |  Bien (pero le cuesta)
+# Fibonacci     | Infinito | Un espectaculo
+# Fibonacci     | Finito | Bien (pero le cuesta)
+# Martingala     | Infinito | Un espectaculo
+# Martingala     | Finito | Bien (pero le cuesta)
+# Martingala Invertida     | Infinito | Un espectaculo
+# Martingala Invertida     | Finito | Un espectaculo
