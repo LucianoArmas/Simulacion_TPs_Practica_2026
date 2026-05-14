@@ -2,13 +2,50 @@ import random, argparse, matplotlib.pyplot as plt
 
 apuesta_inicial = 1
 
-def graficar_frecuencia_relativa(fr_obtenida):
-    fr_esperada = 1/37 
-    plt.figure(figsize=(8, 5))
-    plt.bar(['Simulada (frsa)', 'Teórica'], [fr_obtenida, fr_esperada], color=['blue', 'gray'])
-    plt.axhline(y=fr_esperada, color='red', linestyle='--') # Línea de referencia
-    plt.ylabel('Frecuencia Relativa')
-    plt.title('Frecuencia Relativa de obtener la apuesta favorable')
+# def graficar_frecuencia_relativa(fr_obtenida):
+#     fr_esperada = 1/37 
+#     plt.figure(figsize=(8, 5))
+#     plt.bar(['Simulada (frsa)', 'Teórica'], [fr_obtenida, fr_esperada], color=['blue', 'gray'])
+#     plt.axhline(y=fr_esperada, color='red', linestyle='--') # Línea de referencia
+#     plt.ylabel('Frecuencia Relativa')
+#     plt.title('Frecuencia Relativa de obtener la apuesta favorable')
+#     plt.show()
+
+# --- FUNCIONES DE GRAFICACIÓN ---
+
+def graficar_frecuencia_relativa_evolucion(historial_fr):
+    # n_tiradas ahora se deduce del largo del historial
+    total_tiradas = len(historial_fr)
+    
+    # Para que sea un gráfico de barras legible, seleccionamos 50 puntos representativos
+    # Si graficamos todas las barras en 10.000 tiradas no se vería nada.
+    paso = max(1, total_tiradas // 50) 
+    indices = range(0, total_tiradas, paso)
+    valores_fr = [historial_fr[i] for i in indices]
+    
+    plt.figure(figsize=(10, 5))
+    
+    # Grafico de barras: frsa (frecuencia relativa de obtener la apuesta favorable según n)
+    plt.bar(indices, valores_fr, width=paso*0.8, color='skyblue', label='frsa (Simulada)', alpha=0.7)
+    
+    # Línea horizontal del valor esperado (Teórico)
+    plt.axhline(y=1/37, color='red', linestyle='--', label='Valor Esperado (1/37)')
+    
+    plt.xlabel('n (Número de tiradas)')
+    plt.ylabel('fr (Frecuencia Relativa)')
+    plt.title('Frecuencia Relativa Acumulada (frsa) según n')
+    plt.legend()
+    plt.grid(axis='y', alpha=0.3)
+    plt.show()
+
+def graficar_frecuencias_multiples(todas_las_fr):
+    plt.figure(figsize=(10, 5))
+    for fr_corrida in todas_las_fr:
+        plt.plot(fr_corrida, alpha=0.4)
+    plt.axhline(y=1/37, color='black', linestyle='--', label='Valor Teórico')
+    plt.xlabel('n (Número de tiradas)')
+    plt.ylabel('fr (Frecuencia Relativa)')
+    plt.title('Simultaneidad de Frecuencias Relativas')
     plt.show()
 
 
@@ -26,6 +63,7 @@ def graficar_flujo_caja(historial_capital, capital_inicial):
     plt.title('Evolución del Flujo de Caja')
     plt.show()
 
+
 def graficar_multiples_corridas(lista_de_historiales, capital_inicial):
     plt.figure()
     for historial in lista_de_historiales:
@@ -41,14 +79,8 @@ def graficar_multiples_corridas(lista_de_historiales, capital_inicial):
 
 
 
-def get_args():
-    parser = argparse.ArgumentParser(description='TP Simulación - Ruleta')
-    parser.add_argument('-c', '--tiradas', type=int, required=True, help='Cantidad de tiradas por corrida')
-    parser.add_argument('-n', '--numero', type=int, required=True, help='Número elegido (0-36)')
-    parser.add_argument('-e', '--corridas', type=int, required=True, help='Cantidad de corridas a simular')
-    parser.add_argument('-s', '--estrategia', type=str, help='Estrategia a utilizar')
-    parser.add_argument('-a', '--capital', type=str, help='Tipo de capital')
-    return parser.parse_args()
+
+# --- ESTRATEGIAS DE APUESTA ---
 
 
 def estrategia_martingala_invertida(ultima_apuesta, is_win, capital):
@@ -104,9 +136,12 @@ def estrategia_fibonacci(is_win, capital, apuesta_actual, indice, serie):
 
 
 
+# --- FUNCIONES PRINCIPALES ---
+
 def ejecutar_simulacion(args):
   todas_las_corridas_capital = []
   frecuencias_finales = []
+  todas_las_corridas_fr = []
   
   capital_inicial = 1000 if args.capital == 'f' else 10000000000
   
@@ -116,6 +151,8 @@ def ejecutar_simulacion(args):
     historial_capital = [capital]
     aciertos = 0
     
+    historial_fr = []
+    
     serie_fibo = [1, 1]
     idx_fibo = 0
     
@@ -124,6 +161,11 @@ def ejecutar_simulacion(args):
       if args.capital == "f" and capital < apuesta_actual:
         # Bancarrota
         historial_capital.extend([0] * (args.tiradas - len(historial_capital) + 1))
+        
+        # Para que la frecuencia no se rompa tras la bancarrota, mantenemos el último valor
+        ultima_fr = aciertos / (t-1) if t > 1 else 0
+        historial_fr.extend([ultima_fr] * (args.tiradas - len(historial_fr)))
+        
         break
       
       resultado = random.randint(0, 36)
@@ -133,6 +175,8 @@ def ejecutar_simulacion(args):
         is_win = True
       else:
         is_win = False
+      # Guardamos la frecuencia relativa en el momento T
+      historial_fr.append(aciertos / t)
       
       if args.estrategia == 'd':
         apuesta_actual, capital = estrategia_dalembert(apuesta_actual, is_win, capital)
@@ -152,8 +196,21 @@ def ejecutar_simulacion(args):
     # Al terminar la corrida, guardamos los resultados globales
     todas_las_corridas_capital.append(historial_capital)
     frecuencias_finales.append(aciertos / args.tiradas)
+    todas_las_corridas_fr.append(historial_fr)
     
-  return todas_las_corridas_capital, frecuencias_finales
+  # return todas_las_corridas_capital, frecuencias_finales
+  return todas_las_corridas_capital, todas_las_corridas_fr
+
+
+
+def get_args():
+    parser = argparse.ArgumentParser(description='TP Simulación - Ruleta')
+    parser.add_argument('-c', '--tiradas', type=int, required=True, help='Cantidad de tiradas por corrida')
+    parser.add_argument('-n', '--numero', type=int, required=True, help='Número elegido (0-36)')
+    parser.add_argument('-e', '--corridas', type=int, required=True, help='Cantidad de corridas a simular')
+    parser.add_argument('-s', '--estrategia', type=str, help='Estrategia a utilizar')
+    parser.add_argument('-a', '--capital', type=str, help='Tipo de capital')
+    return parser.parse_args()
 
 
 
@@ -168,15 +225,22 @@ def main():
   cap_init = 1000 if args.capital == 'f' else 10000000000
 
   # 3. Graficar resultados
+  
   # Gráfico 1: Frecuencia Relativa (puedes usar el promedio de todas las corridas)
-  fr_promedio = sum(datos_frecuencias) / len(datos_frecuencias)
-  graficar_frecuencia_relativa(fr_promedio)
+  # fr_promedio = sum(datos_frecuencias) / len(datos_frecuencias)
+  # graficar_frecuencia_relativa(fr_promedio)
+  
+  graficar_frecuencia_relativa_evolucion(datos_frecuencias[0])
+  
   
   # Gráfico 2: Flujo de Caja (solo de la primera corrida para que sea legible)
   graficar_flujo_caja(datos_capital[0], cap_init)
   
   # Gráfico 3: Multiples Corridas (todas juntas)
   graficar_multiples_corridas(datos_capital, cap_init)
+  
+  # Gráfico 4: Grafico de Frecuencias Simultáneas
+  graficar_frecuencias_multiples(datos_frecuencias)
   
 
 
