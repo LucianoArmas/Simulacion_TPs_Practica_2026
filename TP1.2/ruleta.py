@@ -8,14 +8,14 @@ Integrantes:
 - Luciano Armas, legajo 47181
 """
 
-import random, argparse, matplotlib.pyplot as plt, traceback
+import random, argparse, matplotlib.pyplot as plt, traceback, os
 
-apuesta_inicial = 5
+apuesta_inicial = 10
 
 
 # --- FUNCIONES DE GRAFICACIÓN ---
 
-def graficar_frecuencia_relativa_evolucion(historial_fr):
+def graficar_frecuencia_relativa_evolucion(ruta_carpeta, historial_fr, estrategia="", capital=""):
     # n_tiradas ahora se deduce del largo del historial
     total_tiradas = len(historial_fr)
     
@@ -38,9 +38,10 @@ def graficar_frecuencia_relativa_evolucion(historial_fr):
     plt.title('Frecuencia Relativa Acumulada (frsa) según n')
     plt.legend()
     plt.grid(axis='y', alpha=0.3)
+    plt.savefig(f"{ruta_carpeta}/frecuencia_relativa_evolucion_{estrategia}_{capital}.png", dpi=600, bbox_inches='tight')
     plt.show()
 
-def graficar_frecuencias_multiples(todas_las_fr):
+def graficar_frecuencias_multiples(ruta_carpeta, todas_las_fr, estrategia="", capital=""):
     plt.figure(figsize=(10, 5))
     for fr_corrida in todas_las_fr:
         plt.plot(fr_corrida, alpha=0.4)
@@ -48,11 +49,12 @@ def graficar_frecuencias_multiples(todas_las_fr):
     plt.xlabel('n (Número de tiradas)')
     plt.ylabel('fr (Frecuencia Relativa)')
     plt.title('Simultaneidad de Frecuencias Relativas')
+    plt.savefig(f"{ruta_carpeta}/frecuencias_multiples_{estrategia}_{capital}.png", dpi=600, bbox_inches='tight')
     plt.show()
 
 
 
-def graficar_flujo_caja(historial_capital, capital_inicial):
+def graficar_flujo_caja(ruta_carpeta, historial_capital, capital_inicial, estrategia="", capital=""):
     plt.figure()
     # Gráfico azul: Flujo de caja inicial (línea constante)
     plt.axhline(y=capital_inicial, color='blue', label='FCI (Inicial)', linestyle='--')
@@ -63,30 +65,48 @@ def graficar_flujo_caja(historial_capital, capital_inicial):
     plt.ylabel('Cantidad de capital (cc)')
     plt.legend()
     plt.title('Evolución del Flujo de Caja')
+    plt.savefig(f"{ruta_carpeta}/flujo_caja_{estrategia}_{capital}.png", dpi=600, bbox_inches='tight')
     plt.show()
+    
 
 
-def graficar_multiples_corridas(lista_de_historiales, capital_inicial):
-    plt.figure()
-    for historial in lista_de_historiales:
-        plt.plot(historial, alpha=0.6) # alpha para que se vean todas si se superponen
-    
-    # Gráfico azul: Flujo de caja inicial (línea constante)
-    plt.axhline(y=capital_inicial, color='blue', label='FCI (Inicial)', linestyle='--')
-    
-    plt.title(f'Simultaneidad de {len(lista_de_historiales)} corridas')
-    plt.xlabel('Tiradas')
-    plt.ylabel('Capital')
+def graficar_multiples_corridas(ruta_carpeta, lista_de_historiales, capital_inicial, estrategia="", capital=""):
+
+    fig, ax = plt.subplots(figsize=(10, 5))
+
+    for i, historial in enumerate(lista_de_historiales):
+        ax.plot(
+            historial,
+            alpha=0.6,
+            label=f'Corrida {i + 1}'
+        )
+
+    # Línea del capital inicial
+    ax.axhline(
+        y=capital_inicial,
+        color='blue',
+        linestyle='--',
+        label='FCI (Inicial)'
+    )
+
+    ax.set_title(f'Simultaneidad de {len(lista_de_historiales)} corridas')
+    ax.set_xlabel('Tiradas')
+    ax.set_ylabel('Capital')
+
+    ax.legend()
+
+    fig.savefig(f"{ruta_carpeta}/corridas_{len(lista_de_historiales)}_{estrategia}_{capital}.png", dpi=600, bbox_inches='tight')
+
     plt.show()
-
+    plt.close(fig)
 
 
 
 # --- ESTRATEGIAS DE APUESTA ---
 
-def estrategia_martingala_invertida(ultima_apuesta, is_win, capital):
+def estrategia_martingala_invertida(beneficio, ultima_apuesta, is_win, capital):
     if is_win:
-        capital += ultima_apuesta * 35
+        capital += ultima_apuesta * beneficio
         proxima_apuesta = ultima_apuesta * 2
     else:
         capital -= ultima_apuesta 
@@ -94,9 +114,9 @@ def estrategia_martingala_invertida(ultima_apuesta, is_win, capital):
     return proxima_apuesta, capital
 
 
-def estrategia_martingala(ultima_apuesta, is_win, capital):
+def estrategia_martingala(beneficio, ultima_apuesta, is_win, capital):
     if is_win:
-        capital += ultima_apuesta * 35
+        capital += ultima_apuesta * beneficio
         proxima_apuesta = apuesta_inicial
     else:
         capital -= ultima_apuesta
@@ -106,10 +126,10 @@ def estrategia_martingala(ultima_apuesta, is_win, capital):
 
 
 
-def estrategia_dalembert(ultima_apuesta, is_win, capital):
+def estrategia_dalembert(beneficio, ultima_apuesta, is_win, capital):
     unidad = apuesta_inicial
     if is_win:
-        capital += ultima_apuesta * 35
+        capital += ultima_apuesta * beneficio
         # Evitar apuestas menores que la unidad inicial
         proxima_apuesta = max(ultima_apuesta - unidad, unidad)
     else:
@@ -119,9 +139,9 @@ def estrategia_dalembert(ultima_apuesta, is_win, capital):
     return proxima_apuesta, capital
 
 
-def estrategia_fibonacci(is_win, capital, apuesta_actual, indice, serie):
+def estrategia_fibonacci(beneficio, is_win, capital, apuesta_actual, indice, serie):
     if is_win:
-        capital += apuesta_actual * 35
+        capital += apuesta_actual * beneficio
         # Al ganar, retrocedemos 2 posiciones
         nuevo_indice = max(0, indice - 2)
     else:
@@ -143,11 +163,14 @@ def estrategia_fibonacci(is_win, capital, apuesta_actual, indice, serie):
 # --- FUNCIONES PRINCIPALES ---
 
 def ejecutar_simulacion(args):
+  
+  colores_negros = {2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35}
+  
   todas_las_corridas_capital = []
   frecuencias_finales = []
   todas_las_corridas_fr = []
   
-  capital_inicial = 100000 if args.capital == 'f' else 0
+  capital_inicial = 10000 if args.capital == 'f' else 0
   
   for i in range(args.corridas):
     capital = capital_inicial
@@ -174,7 +197,16 @@ def ejecutar_simulacion(args):
       
       resultado = random.randint(0, 36)
       
-      if resultado == args.numero:
+      if args.numero == -1:
+        # APOSTAR A LOS NUMEROS "NEGROS":
+        apuesta_favorable = resultado in colores_negros
+        beneficio = 1
+      else:
+        # APOSTAR A UN UNICO NUMERO:
+        apuesta_favorable = resultado == args.numero
+        beneficio = 35
+
+      if apuesta_favorable:
         aciertos += 1
         is_win = True
       else:
@@ -183,16 +215,16 @@ def ejecutar_simulacion(args):
       historial_fr.append(aciertos / t)
       
       if args.estrategia == 'd':
-        apuesta_actual, capital = estrategia_dalembert(apuesta_actual, is_win, capital)
+        apuesta_actual, capital = estrategia_dalembert(beneficio,apuesta_actual, is_win, capital)
         
       elif args.estrategia == 'f':
-        apuesta_actual, capital, idx_fibo, serie_fibo = estrategia_fibonacci(is_win, capital, apuesta_actual, idx_fibo, serie_fibo)
+        apuesta_actual, capital, idx_fibo, serie_fibo = estrategia_fibonacci(beneficio,is_win, capital, apuesta_actual, idx_fibo, serie_fibo)
       
       elif args.estrategia == "m":
-        apuesta_actual, capital = estrategia_martingala(apuesta_actual, is_win, capital)
+        apuesta_actual, capital = estrategia_martingala(beneficio,apuesta_actual, is_win, capital)
         
       elif args.estrategia == "o":
-        apuesta_actual, capital = estrategia_martingala_invertida(apuesta_actual, is_win, capital)
+        apuesta_actual, capital = estrategia_martingala_invertida(beneficio,apuesta_actual, is_win, capital)
         
       
       historial_capital.append(capital)
@@ -219,6 +251,34 @@ def get_args():
 
 
 
+# --- GESTOR DE CARPETAS PARA GUARDAR GRÁFICOS ---
+CAPITAL_MAP = {
+    'f': 'capital_finito',
+    'i': 'capital_infinito'
+}
+
+ESTRATEGIA_MAP = {
+    'd': 'dalembert',
+    'f': 'fibonacci',
+    'm': 'martingala',
+    'o': 'martingala_invertida'
+}
+
+def get_carpeta(estrategia, capital, numero):
+    carpeta_estrategia = ESTRATEGIA_MAP.get(estrategia, 'desconocida')
+    carpeta_capital = CAPITAL_MAP.get(capital, 'desconocido')
+    
+    if numero == -1:
+        carpeta_estrategia += "_numeros_negros"
+    else:
+        carpeta_estrategia += f"_numero_unico"
+        
+    ruta_carpeta = os.path.join("graficos", carpeta_capital, carpeta_estrategia)
+    os.makedirs(ruta_carpeta, exist_ok=True)
+    
+    return ruta_carpeta
+
+
 def main():
   try:
     args = get_args()
@@ -227,21 +287,23 @@ def main():
     datos_capital, datos_frecuencias = ejecutar_simulacion(args)
 
     # 2. Definir capital inicial para los gráficos
-    cap_init = 100000 if args.capital == 'f' else 0
+    cap_init = 10000 if args.capital == 'f' else 0
 
-    # 3. Graficar resultados
+    # 3. Preparar carpeta para guardar gráficos
+    ruta_carpeta = get_carpeta(args.estrategia, args.capital, args.numero)
 
+    # 4. Graficar resultados
     # Gráfico 1: Frecuencia Relativa 
-    graficar_frecuencia_relativa_evolucion(datos_frecuencias[0])
+    graficar_frecuencia_relativa_evolucion(ruta_carpeta, datos_frecuencias[0], args.estrategia, args.capital)
 
     # Gráfico 2: Flujo de Caja (solo de la primera corrida para que sea legible)
-    graficar_flujo_caja(datos_capital[0], cap_init)
+    graficar_flujo_caja(ruta_carpeta, datos_capital[0], cap_init, args.estrategia, args.capital)
 
     # Gráfico 3: Multiples Corridas (todas juntas)
-    graficar_multiples_corridas(datos_capital, cap_init)
+    graficar_multiples_corridas(ruta_carpeta, datos_capital, cap_init, args.estrategia, args.capital)
 
     # Gráfico 4: Grafico de Frecuencias Simultáneas
-    graficar_frecuencias_multiples(datos_frecuencias)
+    graficar_frecuencias_multiples(ruta_carpeta, datos_frecuencias, args.estrategia, args.capital)
 
   except Exception as e:
     print(f"Error: {e}")
@@ -261,13 +323,3 @@ if __name__ == "__main__":
 # s: 'd' para D'Alembert, 'f' para Fibonacci, 'm' para Martingala, 'o' para Martingala Invertida
 # a: 'f' para capital finito, 'i' para capital infinito
 
-
-# ESTRATEGIA | CAPITAL  | GRAFICA
-# D'Alembert   | Infinito | Un espectaculo
-# D'Alembert   | Finito |  Bien (pero le cuesta)
-# Fibonacci     | Infinito | Un espectaculo
-# Fibonacci     | Finito | Bien (pero le cuesta)
-# Martingala     | Infinito | Un espectaculo
-# Martingala     | Finito | Bien (pero le cuesta)
-# Martingala Invertida     | Infinito | Un espectaculo
-# Martingala Invertida     | Finito | Un espectaculo
