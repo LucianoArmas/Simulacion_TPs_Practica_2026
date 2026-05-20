@@ -597,14 +597,37 @@ Para la simulación con capital infinito se realziará una apuesta inicial de 10
 
 
 
+\section{Conclusión de las estrategias}
+\subsection{D'Alembert}
+Se puede observar que al aplicar la técnica de "Numero Único" el flujo de la caja llega a numeros negativos, es decir a bancarrota, muy rápidamente.
+Al utilizar la estrategia de "Números Negros" el capital muestra una alta volatilidad a lo largo del tiempo. Muchas trayectorias oscilan alrededor del capital inicial durante las primeras tiradas, pero tienden a divergir con el correr del tiempo.
+
+En todas las corridas del experimento con el capital finito, el capital termina agotándose antes de llegar al límite de tiradas. Esto evidencia una de las principales limitaciones del sistema: ante una racha prolongada de pérdidas, el capital puede no ser suficiente para sostener la progresión.
+
+\subsection{Fibonacci}
+La estrategia de Fibonacci, con la técnica de "Números Negros", presenta un comportamiento más estable en comparación con otras estrategias analizadas. El capital tiene cierta tendencia alcista, es decir que podemos obtener ganancias. Sin embargo, también presenta riesgos significativos, especialmente en situaciones donde se produce una racha de pérdidas prolongada.
+
+Esta estrategia se puede sostener en el corto plazo, pero se puede tener una fuerte perdida de capital en cualquier momento o incluso caer en bancarrota.
+
+A su vez esta estrategia es más riesgosa para la técnica de "Numero Unico", ya que el capital se agota rápidamente, llegando a la bancarrota en todas las corridas del experimento con capital finito.
+
+
+\subsection{Martingala}
+Observamos que la estrategia de Martingala, con la técnica de "Números Negros", presenta un comportamiento muy volátil. El capital puede experimentar grandes fluctuaciones, y en algunos casos, puede llegar a la bancarrota rápidamente.
+
+Esta estrategia es extremadamente riesgosa, especialmente en la técnica de "Numero Unico", ya que el capital se agota rápidamente, llegando a la bancarrota en todas las corridas del experimento con capital finito. Esta estrategia no es viable desde el inicio, ya que requiere un capital considerable para sostener la progresión de apuestas, lo que no es realista en la mayoría de los casos.
+
+
+\subsection{Martingala Invertido}
+Esta estrategia, con la técnica de "Número Único", muestra un comportamiento favorable en comparación con otras estrategias, e incluso con la misma estrategia pero con la técnica de "Números Negros". Aún así el capital muestra una alta volatilidad a lo largo del tiempo, llegando a generar pérdidas significativas.
+
+Al utilizar la estrategia de "Números Negros" el capital muestra una fuerte tendencia bajista, llegando a la bancarrota en todas las corridas del experimento con capital finito. Esta estrategia es extremadamente riesgosa.
 
 
 
 
 
-
-
-\section{Conclusión}
+\section{Conclusión general}
 A partir del análisis realizado, podemos afirmar que ninguna de las estrategias y técnicas clásicas de apuestas analizadas resulta favorable a largo plazo. Si bien pueden ofrecer ciertas ventajas momentáneas, especialmente en situaciones puntuales o bajo condiciones específicas, todas tienden a generar pérdidas sostenidas con el tiempo, ya sea con capital limitado o incluso con capital ilimitado.
 
 Llama la atención que algunas estrategias parecieran ser apropiadas para una determinada técnica, pero muy arriesgadas para otra técnica. Como por ejemplo la estrategia "Martingala Invertida" para la técnica "Numero unico", en la cual hubo una sola bancarrota de las 5 corridas. Al utilizar "Martingala Invertida" para la técnica "Numeros negros" todas las corridas terminan en bancarrota.

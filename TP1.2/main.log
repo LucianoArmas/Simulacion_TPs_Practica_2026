@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.17)  17 MAY 2026 17:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.17)  19 MAY 2026 22:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -463,7 +463,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 
 
 {C:/Users/lucia/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/lucia/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}] [2]
-<graficos/capital_finito/dalembert_numero_unico/flujo_caja_d_f.png, id=123, 425.54985pt x 327.74445pt>
+<graficos/capital_finito/dalembert_numero_unico/flujo_caja_d_f.png, id=143, 425.54985pt x 327.74445pt>
 File: graficos/capital_finito/dalembert_numero_unico/flujo_caja_d_f.png Graphic file (type png)
 <use graficos/capital_finito/dalembert_numero_unico/flujo_caja_d_f.png>
 Package pdftex.def Info: graficos/capital_finito/dalembert_numero_unico/flujo_caja_d_f.png  used on input line 144.
@@ -472,12 +472,12 @@ LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 14
  (C:\Users\lucia\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-<graficos/capital_finito/dalembert_numero_unico/corridas_5_d_f.png, id=125, 633.567pt x 338.34406pt>
+<graficos/capital_finito/dalembert_numero_unico/corridas_5_d_f.png, id=145, 633.567pt x 338.34406pt>
 File: graficos/capital_finito/dalembert_numero_unico/corridas_5_d_f.png Graphic file (type png)
 <use graficos/capital_finito/dalembert_numero_unico/corridas_5_d_f.png>
 Package pdftex.def Info: graficos/capital_finito/dalembert_numero_unico/corridas_5_d_f.png  used on input line 150.
 (pdftex.def)             Requested size: 375.80542pt x 200.68993pt.
-<graficos/capital_finito/dalembert_numero_unico/frecuencia_relativa_evolucion_d_f.png, id=126, 617.6676pt x 338.9463pt>
+<graficos/capital_finito/dalembert_numero_unico/frecuencia_relativa_evolucion_d_f.png, id=146, 617.6676pt x 338.9463pt>
 File: graficos/capital_finito/dalembert_numero_unico/frecuencia_relativa_evolucion_d_f.png Graphic file (type png)
 <use graficos/capital_finito/dalembert_numero_unico/frecuencia_relativa_evolucion_d_f.png>
 Package pdftex.def Info: graficos/capital_finito/dalembert_numero_unico/frecuencia_relativa_evolucion_d_f.png  used on input line 156.
@@ -488,7 +488,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has
                                                   \__shipout_drop_firstpage_...
 l.159 \end{figure}
                    <./graficos/capital_finito/dalembert_numero_unico/flujo_caja_d_f.png>]
-<graficos/capital_finito/dalembert_numero_unico/frecuencias_multiples_d_f.png, id=133, 617.6676pt x 338.34406pt>
+<graficos/capital_finito/dalembert_numero_unico/frecuencias_multiples_d_f.png, id=153, 617.6676pt x 338.34406pt>
 File: graficos/capital_finito/dalembert_numero_unico/frecuencias_multiples_d_f.png Graphic file (type png)
 <use graficos/capital_finito/dalembert_numero_unico/frecuencias_multiples_d_f.png>
 Package pdftex.def Info: graficos/capital_finito/dalembert_numero_unico/frecuencias_multiples_d_f.png  used on input line 162.
@@ -507,17 +507,17 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has
                                                   \__shipout_drop_firstpage_...
 l.166 
        <./graficos/capital_finito/dalembert_numero_unico/corridas_5_d_f.png> <./graficos/capital_finito/dalembert_numero_unico/frecuencia_relativa_evolucion_d_f.png>]
-<graficos/capital_finito/fibonacci_numero_unico/flujo_caja_f_f.png, id=142, 425.54985pt x 327.74445pt>
+<graficos/capital_finito/fibonacci_numero_unico/flujo_caja_f_f.png, id=162, 425.54985pt x 327.74445pt>
 File: graficos/capital_finito/fibonacci_numero_unico/flujo_caja_f_f.png Graphic file (type png)
 <use graficos/capital_finito/fibonacci_numero_unico/flujo_caja_f_f.png>
 Package pdftex.def Info: graficos/capital_finito/fibonacci_numero_unico/flujo_caja_f_f.png  used on input line 171.
 (pdftex.def)             Requested size: 375.80542pt x 289.4412pt.
-<graficos/capital_finito/fibonacci_numero_unico/corridas_5_f_f.png, id=143, 627.18315pt x 338.34406pt>
+<graficos/capital_finito/fibonacci_numero_unico/corridas_5_f_f.png, id=163, 627.18315pt x 338.34406pt>
 File: graficos/capital_finito/fibonacci_numero_unico/corridas_5_f_f.png Graphic file (type png)
 <use graficos/capital_finito/fibonacci_numero_unico/corridas_5_f_f.png>
 Package pdftex.def Info: graficos/capital_finito/fibonacci_numero_unico/corridas_5_f_f.png  used on input line 177.
 (pdftex.def)             Requested size: 375.80542pt x 202.73953pt.
-<graficos/capital_finito/fibonacci_numero_unico/frecuencia_relativa_evolucion_f_f.png, id=144, 611.28375pt x 338.9463pt>
+<graficos/capital_finito/fibonacci_numero_unico/frecuencia_relativa_evolucion_f_f.png, id=164, 611.28375pt x 338.9463pt>
 File: graficos/capital_finito/fibonacci_numero_unico/frecuencia_relativa_evolucion_f_f.png Graphic file (type png)
 <use graficos/capital_finito/fibonacci_numero_unico/frecuencia_relativa_evolucion_f_f.png>
 Package pdftex.def Info: graficos/capital_finito/fibonacci_numero_unico/frecuencia_relativa_evolucion_f_f.png  used on input line 183.
@@ -536,7 +536,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) has
                                                   \__shipout_drop_firstpage_...
 l.186 \end{figure}
                    <./graficos/capital_finito/dalembert_numero_unico/frecuencias_multiples_d_f.png> <./graficos/capital_finito/fibonacci_numero_unico/flujo_caja_f_f.png>]
-<graficos/capital_finito/fibonacci_numero_unico/frecuencias_multiples_f_f.png, id=153, 613.45184pt x 338.34406pt>
+<graficos/capital_finito/fibonacci_numero_unico/frecuencias_multiples_f_f.png, id=173, 613.45184pt x 338.34406pt>
 File: graficos/capital_finito/fibonacci_numero_unico/frecuencias_multiples_f_f.png Graphic file (type png)
 <use graficos/capital_finito/fibonacci_numero_unico/frecuencias_multiples_f_f.png>
 Package pdftex.def Info: graficos/capital_finito/fibonacci_numero_unico/frecuencias_multiples_f_f.png  used on input line 189.
@@ -555,17 +555,17 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.7}) has
                                                   \__shipout_drop_firstpage_...
 l.193 
        <./graficos/capital_finito/fibonacci_numero_unico/corridas_5_f_f.png> <./graficos/capital_finito/fibonacci_numero_unico/frecuencia_relativa_evolucion_f_f.png>]
-<graficos/capital_finito/martingala_numero_unico/flujo_caja_m_f.png, id=162, 425.54985pt x 327.74445pt>
+<graficos/capital_finito/martingala_numero_unico/flujo_caja_m_f.png, id=182, 425.54985pt x 327.74445pt>
 File: graficos/capital_finito/martingala_numero_unico/flujo_caja_m_f.png Graphic file (type png)
 <use graficos/capital_finito/martingala_numero_unico/flujo_caja_m_f.png>
 Package pdftex.def Info: graficos/capital_finito/martingala_numero_unico/flujo_caja_m_f.png  used on input line 199.
 (pdftex.def)             Requested size: 375.80542pt x 289.4412pt.
-<graficos/capital_finito/martingala_numero_unico/corridas_5_m_f.png, id=163, 627.18315pt x 338.34406pt>
+<graficos/capital_finito/martingala_numero_unico/corridas_5_m_f.png, id=183, 627.18315pt x 338.34406pt>
 File: graficos/capital_finito/martingala_numero_unico/corridas_5_m_f.png Graphic file (type png)
 <use graficos/capital_finito/martingala_numero_unico/corridas_5_m_f.png>
 Package pdftex.def Info: graficos/capital_finito/martingala_numero_unico/corridas_5_m_f.png  used on input line 205.
 (pdftex.def)             Requested size: 375.80542pt x 202.73953pt.
-<graficos/capital_finito/martingala_numero_unico/frecuencia_relativa_evolucion_m_f.png, id=164, 611.28375pt x 338.9463pt>
+<graficos/capital_finito/martingala_numero_unico/frecuencia_relativa_evolucion_m_f.png, id=184, 611.28375pt x 338.9463pt>
 File: graficos/capital_finito/martingala_numero_unico/frecuencia_relativa_evolucion_m_f.png Graphic file (type png)
 <use graficos/capital_finito/martingala_numero_unico/frecuencia_relativa_evolucion_m_f.png>
 Package pdftex.def Info: graficos/capital_finito/martingala_numero_unico/frecuencia_relativa_evolucion_m_f.png  used on input line 211.
@@ -584,7 +584,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.9}) has
                                                   \__shipout_drop_firstpage_...
 l.214 \end{figure}
                    <./graficos/capital_finito/fibonacci_numero_unico/frecuencias_multiples_f_f.png> <./graficos/capital_finito/martingala_numero_unico/flujo_caja_m_f.png>]
-<graficos/capital_finito/martingala_numero_unico/frecuencias_multiples_m_f.png, id=174, 611.28375pt x 338.34406pt>
+<graficos/capital_finito/martingala_numero_unico/frecuencias_multiples_m_f.png, id=194, 611.28375pt x 338.34406pt>
 File: graficos/capital_finito/martingala_numero_unico/frecuencias_multiples_m_f.png Graphic file (type png)
 <use graficos/capital_finito/martingala_numero_unico/frecuencias_multiples_m_f.png>
 Package pdftex.def Info: graficos/capital_finito/martingala_numero_unico/frecuencias_multiples_m_f.png  used on input line 217.
@@ -603,17 +603,17 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.11}) ha
                                                   \__shipout_drop_firstpage_...
 l.221 
        <./graficos/capital_finito/martingala_numero_unico/corridas_5_m_f.png> <./graficos/capital_finito/martingala_numero_unico/frecuencia_relativa_evolucion_m_f.png>]
-<graficos/capital_finito/martingala_invertida_numero_unico/flujo_caja_o_f.png, id=183, 425.54985pt x 327.74445pt>
+<graficos/capital_finito/martingala_invertida_numero_unico/flujo_caja_o_f.png, id=203, 425.54985pt x 327.74445pt>
 File: graficos/capital_finito/martingala_invertida_numero_unico/flujo_caja_o_f.png Graphic file (type png)
 <use graficos/capital_finito/martingala_invertida_numero_unico/flujo_caja_o_f.png>
 Package pdftex.def Info: graficos/capital_finito/martingala_invertida_numero_unico/flujo_caja_o_f.png  used on input line 227.
 (pdftex.def)             Requested size: 375.80542pt x 289.4412pt.
-<graficos/capital_finito/martingala_invertida_numero_unico/corridas_5_o_f.png, id=184, 627.18315pt x 338.34406pt>
+<graficos/capital_finito/martingala_invertida_numero_unico/corridas_5_o_f.png, id=204, 627.18315pt x 338.34406pt>
 File: graficos/capital_finito/martingala_invertida_numero_unico/corridas_5_o_f.png Graphic file (type png)
 <use graficos/capital_finito/martingala_invertida_numero_unico/corridas_5_o_f.png>
 Package pdftex.def Info: graficos/capital_finito/martingala_invertida_numero_unico/corridas_5_o_f.png  used on input line 233.
 (pdftex.def)             Requested size: 375.80542pt x 202.73953pt.
-<graficos/capital_finito/martingala_invertida_numero_unico/frecuencia_relativa_evolucion_o_f.png, id=185, 624.05145pt x 338.9463pt>
+<graficos/capital_finito/martingala_invertida_numero_unico/frecuencia_relativa_evolucion_o_f.png, id=205, 624.05145pt x 338.9463pt>
 File: graficos/capital_finito/martingala_invertida_numero_unico/frecuencia_relativa_evolucion_o_f.png Graphic file (type png)
 <use graficos/capital_finito/martingala_invertida_numero_unico/frecuencia_relativa_evolucion_o_f.png>
 Package pdftex.def Info: graficos/capital_finito/martingala_invertida_numero_unico/frecuencia_relativa_evolucion_o_f.png  used on input line 239.
@@ -632,7 +632,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.13}) ha
                                                   \__shipout_drop_firstpage_...
 l.242 \end{figure}
                    <./graficos/capital_finito/martingala_numero_unico/frecuencias_multiples_m_f.png> <./graficos/capital_finito/martingala_invertida_numero_unico/flujo_caja_o_f.png>]
-<graficos/capital_finito/martingala_invertida_numero_unico/frecuencias_multiples_o_f.png, id=194, 617.6676pt x 338.34406pt>
+<graficos/capital_finito/martingala_invertida_numero_unico/frecuencias_multiples_o_f.png, id=214, 617.6676pt x 338.34406pt>
 File: graficos/capital_finito/martingala_invertida_numero_unico/frecuencias_multiples_o_f.png Graphic file (type png)
 <use graficos/capital_finito/martingala_invertida_numero_unico/frecuencias_multiples_o_f.png>
 Package pdftex.def Info: graficos/capital_finito/martingala_invertida_numero_unico/frecuencias_multiples_o_f.png  used on input line 245.
@@ -651,17 +651,17 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.15}) ha
                                                   \__shipout_drop_firstpage_...
 l.249 
        <./graficos/capital_finito/martingala_invertida_numero_unico/corridas_5_o_f.png> <./graficos/capital_finito/martingala_invertida_numero_unico/frecuencia_relativa_evolucion_o_f.png>]
-<graficos/capital_finito/dalembert_numeros_negros/flujo_caja_d_f.png, id=203, 425.54985pt x 327.74445pt>
+<graficos/capital_finito/dalembert_numeros_negros/flujo_caja_d_f.png, id=223, 425.54985pt x 327.74445pt>
 File: graficos/capital_finito/dalembert_numeros_negros/flujo_caja_d_f.png Graphic file (type png)
 <use graficos/capital_finito/dalembert_numeros_negros/flujo_caja_d_f.png>
 Package pdftex.def Info: graficos/capital_finito/dalembert_numeros_negros/flujo_caja_d_f.png  used on input line 258.
 (pdftex.def)             Requested size: 375.80542pt x 289.4412pt.
-<graficos/capital_finito/dalembert_numeros_negros/corridas_5_d_f.png, id=204, 627.18315pt x 338.34406pt>
+<graficos/capital_finito/dalembert_numeros_negros/corridas_5_d_f.png, id=224, 627.18315pt x 338.34406pt>
 File: graficos/capital_finito/dalembert_numeros_negros/corridas_5_d_f.png Graphic file (type png)
 <use graficos/capital_finito/dalembert_numeros_negros/corridas_5_d_f.png>
 Package pdftex.def Info: graficos/capital_finito/dalembert_numeros_negros/corridas_5_d_f.png  used on input line 264.
 (pdftex.def)             Requested size: 375.80542pt x 202.73953pt.
-<graficos/capital_finito/dalembert_numeros_negros/frecuencia_relativa_evolucion_d_f.png, id=205, 611.28375pt x 338.9463pt>
+<graficos/capital_finito/dalembert_numeros_negros/frecuencia_relativa_evolucion_d_f.png, id=225, 611.28375pt x 338.9463pt>
 File: graficos/capital_finito/dalembert_numeros_negros/frecuencia_relativa_evolucion_d_f.png Graphic file (type png)
 <use graficos/capital_finito/dalembert_numeros_negros/frecuencia_relativa_evolucion_d_f.png>
 Package pdftex.def Info: graficos/capital_finito/dalembert_numeros_negros/frecuencia_relativa_evolucion_d_f.png  used on input line 270.
@@ -680,7 +680,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.17}) ha
                                                   \__shipout_drop_firstpage_...
 l.273 \end{figure}
                    <./graficos/capital_finito/martingala_invertida_numero_unico/frecuencias_multiples_o_f.png> <./graficos/capital_finito/dalembert_numeros_negros/flujo_caja_d_f.png>]
-<graficos/capital_finito/dalembert_numeros_negros/frecuencias_multiples_d_f.png, id=214, 611.28375pt x 338.34406pt>
+<graficos/capital_finito/dalembert_numeros_negros/frecuencias_multiples_d_f.png, id=234, 611.28375pt x 338.34406pt>
 File: graficos/capital_finito/dalembert_numeros_negros/frecuencias_multiples_d_f.png Graphic file (type png)
 <use graficos/capital_finito/dalembert_numeros_negros/frecuencias_multiples_d_f.png>
 Package pdftex.def Info: graficos/capital_finito/dalembert_numeros_negros/frecuencias_multiples_d_f.png  used on input line 276.
@@ -699,17 +699,17 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.19}) ha
                                                   \__shipout_drop_firstpage_...
 l.280 
        <./graficos/capital_finito/dalembert_numeros_negros/corridas_5_d_f.png> <./graficos/capital_finito/dalembert_numeros_negros/frecuencia_relativa_evolucion_d_f.png>]
-<graficos/capital_finito/fibonacci_numeros_negros/flujo_caja_f_f.png, id=223, 425.54985pt x 327.74445pt>
+<graficos/capital_finito/fibonacci_numeros_negros/flujo_caja_f_f.png, id=243, 425.54985pt x 327.74445pt>
 File: graficos/capital_finito/fibonacci_numeros_negros/flujo_caja_f_f.png Graphic file (type png)
 <use graficos/capital_finito/fibonacci_numeros_negros/flujo_caja_f_f.png>
 Package pdftex.def Info: graficos/capital_finito/fibonacci_numeros_negros/flujo_caja_f_f.png  used on input line 285.
 (pdftex.def)             Requested size: 375.80542pt x 289.4412pt.
-<graficos/capital_finito/fibonacci_numeros_negros/corridas_5_f_f.png, id=224, 627.18315pt x 338.34406pt>
+<graficos/capital_finito/fibonacci_numeros_negros/corridas_5_f_f.png, id=244, 627.18315pt x 338.34406pt>
 File: graficos/capital_finito/fibonacci_numeros_negros/corridas_5_f_f.png Graphic file (type png)
 <use graficos/capital_finito/fibonacci_numeros_negros/corridas_5_f_f.png>
 Package pdftex.def Info: graficos/capital_finito/fibonacci_numeros_negros/corridas_5_f_f.png  used on input line 291.
 (pdftex.def)             Requested size: 375.80542pt x 202.73953pt.
-<graficos/capital_finito/fibonacci_numeros_negros/frecuencia_relativa_evolucion_f_f.png, id=225, 611.28375pt x 338.9463pt>
+<graficos/capital_finito/fibonacci_numeros_negros/frecuencia_relativa_evolucion_f_f.png, id=245, 611.28375pt x 338.9463pt>
 File: graficos/capital_finito/fibonacci_numeros_negros/frecuencia_relativa_evolucion_f_f.png Graphic file (type png)
 <use graficos/capital_finito/fibonacci_numeros_negros/frecuencia_relativa_evolucion_f_f.png>
 Package pdftex.def Info: graficos/capital_finito/fibonacci_numeros_negros/frecuencia_relativa_evolucion_f_f.png  used on input line 297.
@@ -728,7 +728,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.21}) ha
                                                   \__shipout_drop_firstpage_...
 l.300 \end{figure}
                    <./graficos/capital_finito/dalembert_numeros_negros/frecuencias_multiples_d_f.png> <./graficos/capital_finito/fibonacci_numeros_negros/flujo_caja_f_f.png>]
-<graficos/capital_finito/fibonacci_numeros_negros/frecuencias_multiples_f_f.png, id=235, 611.28375pt x 338.34406pt>
+<graficos/capital_finito/fibonacci_numeros_negros/frecuencias_multiples_f_f.png, id=255, 611.28375pt x 338.34406pt>
 File: graficos/capital_finito/fibonacci_numeros_negros/frecuencias_multiples_f_f.png Graphic file (type png)
 <use graficos/capital_finito/fibonacci_numeros_negros/frecuencias_multiples_f_f.png>
 Package pdftex.def Info: graficos/capital_finito/fibonacci_numeros_negros/frecuencias_multiples_f_f.png  used on input line 303.
@@ -747,17 +747,17 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.23}) ha
                                                   \__shipout_drop_firstpage_...
 l.307 
        <./graficos/capital_finito/fibonacci_numeros_negros/corridas_5_f_f.png> <./graficos/capital_finito/fibonacci_numeros_negros/frecuencia_relativa_evolucion_f_f.png>]
-<graficos/capital_finito/martingala_numeros_negros/flujo_caja_m_f.png, id=244, 425.54985pt x 327.74445pt>
+<graficos/capital_finito/martingala_numeros_negros/flujo_caja_m_f.png, id=264, 425.54985pt x 327.74445pt>
 File: graficos/capital_finito/martingala_numeros_negros/flujo_caja_m_f.png Graphic file (type png)
 <use graficos/capital_finito/martingala_numeros_negros/flujo_caja_m_f.png>
 Package pdftex.def Info: graficos/capital_finito/martingala_numeros_negros/flujo_caja_m_f.png  used on input line 313.
 (pdftex.def)             Requested size: 375.80542pt x 289.4412pt.
-<graficos/capital_finito/martingala_numeros_negros/corridas_5_m_f.png, id=245, 627.18315pt x 338.34406pt>
+<graficos/capital_finito/martingala_numeros_negros/corridas_5_m_f.png, id=265, 627.18315pt x 338.34406pt>
 File: graficos/capital_finito/martingala_numeros_negros/corridas_5_m_f.png Graphic file (type png)
 <use graficos/capital_finito/martingala_numeros_negros/corridas_5_m_f.png>
 Package pdftex.def Info: graficos/capital_finito/martingala_numeros_negros/corridas_5_m_f.png  used on input line 319.
 (pdftex.def)             Requested size: 375.80542pt x 202.73953pt.
-<graficos/capital_finito/martingala_numeros_negros/frecuencia_relativa_evolucion_m_f.png, id=246, 611.28375pt x 338.9463pt>
+<graficos/capital_finito/martingala_numeros_negros/frecuencia_relativa_evolucion_m_f.png, id=266, 611.28375pt x 338.9463pt>
 File: graficos/capital_finito/martingala_numeros_negros/frecuencia_relativa_evolucion_m_f.png Graphic file (type png)
 <use graficos/capital_finito/martingala_numeros_negros/frecuencia_relativa_evolucion_m_f.png>
 Package pdftex.def Info: graficos/capital_finito/martingala_numeros_negros/frecuencia_relativa_evolucion_m_f.png  used on input line 325.
@@ -776,7 +776,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.25}) ha
                                                   \__shipout_drop_firstpage_...
 l.328 \end{figure}
                    <./graficos/capital_finito/fibonacci_numeros_negros/frecuencias_multiples_f_f.png> <./graficos/capital_finito/martingala_numeros_negros/flujo_caja_m_f.png>]
-<graficos/capital_finito/martingala_numeros_negros/frecuencias_multiples_m_f.png, id=255, 611.28375pt x 338.34406pt>
+<graficos/capital_finito/martingala_numeros_negros/frecuencias_multiples_m_f.png, id=275, 611.28375pt x 338.34406pt>
 File: graficos/capital_finito/martingala_numeros_negros/frecuencias_multiples_m_f.png Graphic file (type png)
 <use graficos/capital_finito/martingala_numeros_negros/frecuencias_multiples_m_f.png>
 Package pdftex.def Info: graficos/capital_finito/martingala_numeros_negros/frecuencias_multiples_m_f.png  used on input line 331.
@@ -795,17 +795,17 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.27}) ha
                                                   \__shipout_drop_firstpage_...
 l.335 
        <./graficos/capital_finito/martingala_numeros_negros/corridas_5_m_f.png> <./graficos/capital_finito/martingala_numeros_negros/frecuencia_relativa_evolucion_m_f.png>]
-<graficos/capital_finito/martingala_invertida_numeros_negros/flujo_caja_o_f.png, id=264, 434.46315pt x 327.74445pt>
+<graficos/capital_finito/martingala_invertida_numeros_negros/flujo_caja_o_f.png, id=284, 434.46315pt x 327.74445pt>
 File: graficos/capital_finito/martingala_invertida_numeros_negros/flujo_caja_o_f.png Graphic file (type png)
 <use graficos/capital_finito/martingala_invertida_numeros_negros/flujo_caja_o_f.png>
 Package pdftex.def Info: graficos/capital_finito/martingala_invertida_numeros_negros/flujo_caja_o_f.png  used on input line 341.
 (pdftex.def)             Requested size: 375.80542pt x 283.51004pt.
-<graficos/capital_finito/martingala_invertida_numeros_negros/corridas_5_o_f.png, id=265, 628.62856pt x 338.34406pt>
+<graficos/capital_finito/martingala_invertida_numeros_negros/corridas_5_o_f.png, id=285, 628.62856pt x 338.34406pt>
 File: graficos/capital_finito/martingala_invertida_numeros_negros/corridas_5_o_f.png Graphic file (type png)
 <use graficos/capital_finito/martingala_invertida_numeros_negros/corridas_5_o_f.png>
 Package pdftex.def Info: graficos/capital_finito/martingala_invertida_numeros_negros/corridas_5_o_f.png  used on input line 347.
 (pdftex.def)             Requested size: 375.80542pt x 202.26456pt.
-<graficos/capital_finito/martingala_invertida_numeros_negros/frecuencia_relativa_evolucion_o_f.png, id=266, 620.91975pt x 338.9463pt>
+<graficos/capital_finito/martingala_invertida_numeros_negros/frecuencia_relativa_evolucion_o_f.png, id=286, 620.91975pt x 338.9463pt>
 File: graficos/capital_finito/martingala_invertida_numeros_negros/frecuencia_relativa_evolucion_o_f.png Graphic file (type png)
 <use graficos/capital_finito/martingala_invertida_numeros_negros/frecuencia_relativa_evolucion_o_f.png>
 Package pdftex.def Info: graficos/capital_finito/martingala_invertida_numeros_negros/frecuencia_relativa_evolucion_o_f.png  used on input line 353.
@@ -824,7 +824,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.29}) ha
                                                   \__shipout_drop_firstpage_...
 l.356 \end{figure}
                    <./graficos/capital_finito/martingala_numeros_negros/frecuencias_multiples_m_f.png> <./graficos/capital_finito/martingala_invertida_numeros_negros/flujo_caja_o_f.png>]
-<graficos/capital_finito/martingala_invertida_numeros_negros/frecuencias_multiples_o_f.png, id=275, 612.97005pt x 338.34406pt>
+<graficos/capital_finito/martingala_invertida_numeros_negros/frecuencias_multiples_o_f.png, id=295, 612.97005pt x 338.34406pt>
 File: graficos/capital_finito/martingala_invertida_numeros_negros/frecuencias_multiples_o_f.png Graphic file (type png)
 <use graficos/capital_finito/martingala_invertida_numeros_negros/frecuencias_multiples_o_f.png>
 Package pdftex.def Info: graficos/capital_finito/martingala_invertida_numeros_negros/frecuencias_multiples_o_f.png  used on input line 359.
@@ -843,17 +843,17 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.31}) ha
                                                   \__shipout_drop_firstpage_...
 l.363 
        <./graficos/capital_finito/martingala_invertida_numeros_negros/corridas_5_o_f.png> <./graficos/capital_finito/martingala_invertida_numeros_negros/frecuencia_relativa_evolucion_o_f.png>]
-<graficos/capital_infinito/dalembert_numero_unico/flujo_caja_d_i.png, id=284, 408.44595pt x 327.74445pt>
+<graficos/capital_infinito/dalembert_numero_unico/flujo_caja_d_i.png, id=304, 408.44595pt x 327.74445pt>
 File: graficos/capital_infinito/dalembert_numero_unico/flujo_caja_d_i.png Graphic file (type png)
 <use graficos/capital_infinito/dalembert_numero_unico/flujo_caja_d_i.png>
 Package pdftex.def Info: graficos/capital_infinito/dalembert_numero_unico/flujo_caja_d_i.png  used on input line 376.
 (pdftex.def)             Requested size: 375.80542pt x 301.55855pt.
-<graficos/capital_infinito/dalembert_numero_unico/corridas_5_d_i.png, id=285, 610.07925pt x 338.34406pt>
+<graficos/capital_infinito/dalembert_numero_unico/corridas_5_d_i.png, id=305, 610.07925pt x 338.34406pt>
 File: graficos/capital_infinito/dalembert_numero_unico/corridas_5_d_i.png Graphic file (type png)
 <use graficos/capital_infinito/dalembert_numero_unico/corridas_5_d_i.png>
 Package pdftex.def Info: graficos/capital_infinito/dalembert_numero_unico/corridas_5_d_i.png  used on input line 382.
 (pdftex.def)             Requested size: 375.80542pt x 208.4185pt.
-<graficos/capital_infinito/dalembert_numero_unico/frecuencia_relativa_evolucion_d_i.png, id=286, 624.05145pt x 338.9463pt>
+<graficos/capital_infinito/dalembert_numero_unico/frecuencia_relativa_evolucion_d_i.png, id=306, 624.05145pt x 338.9463pt>
 File: graficos/capital_infinito/dalembert_numero_unico/frecuencia_relativa_evolucion_d_i.png Graphic file (type png)
 <use graficos/capital_infinito/dalembert_numero_unico/frecuencia_relativa_evolucion_d_i.png>
 Package pdftex.def Info: graficos/capital_infinito/dalembert_numero_unico/frecuencia_relativa_evolucion_d_i.png  used on input line 388.
@@ -869,7 +869,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.33}) ha
                                                   \__shipout_drop_firstpage_...
 l.391 \end{figure}
                    <./graficos/capital_finito/martingala_invertida_numeros_negros/frecuencias_multiples_o_f.png> <./graficos/capital_infinito/dalembert_numero_unico/flujo_caja_d_i.png>]
-<graficos/capital_infinito/dalembert_numero_unico/frecuencias_multiples_d_i.png, id=296, 617.6676pt x 338.34406pt>
+<graficos/capital_infinito/dalembert_numero_unico/frecuencias_multiples_d_i.png, id=316, 617.6676pt x 338.34406pt>
 File: graficos/capital_infinito/dalembert_numero_unico/frecuencias_multiples_d_i.png Graphic file (type png)
 <use graficos/capital_infinito/dalembert_numero_unico/frecuencias_multiples_d_i.png>
 Package pdftex.def Info: graficos/capital_infinito/dalembert_numero_unico/frecuencias_multiples_d_i.png  used on input line 394.
@@ -888,17 +888,17 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.35}) ha
                                                   \__shipout_drop_firstpage_...
 l.398 
        <./graficos/capital_infinito/dalembert_numero_unico/corridas_5_d_i.png> <./graficos/capital_infinito/dalembert_numero_unico/frecuencia_relativa_evolucion_d_i.png>]
-<graficos/capital_infinito/fibonacci_numero_unico/flujo_caja_f_i.png, id=305, 408.44595pt x 327.74445pt>
+<graficos/capital_infinito/fibonacci_numero_unico/flujo_caja_f_i.png, id=325, 408.44595pt x 327.74445pt>
 File: graficos/capital_infinito/fibonacci_numero_unico/flujo_caja_f_i.png Graphic file (type png)
 <use graficos/capital_infinito/fibonacci_numero_unico/flujo_caja_f_i.png>
 Package pdftex.def Info: graficos/capital_infinito/fibonacci_numero_unico/flujo_caja_f_i.png  used on input line 403.
 (pdftex.def)             Requested size: 375.80542pt x 301.55855pt.
-<graficos/capital_infinito/fibonacci_numero_unico/corridas_5_f_i.png, id=306, 610.07925pt x 338.34406pt>
+<graficos/capital_infinito/fibonacci_numero_unico/corridas_5_f_i.png, id=326, 610.07925pt x 338.34406pt>
 File: graficos/capital_infinito/fibonacci_numero_unico/corridas_5_f_i.png Graphic file (type png)
 <use graficos/capital_infinito/fibonacci_numero_unico/corridas_5_f_i.png>
 Package pdftex.def Info: graficos/capital_infinito/fibonacci_numero_unico/corridas_5_f_i.png  used on input line 409.
 (pdftex.def)             Requested size: 375.80542pt x 208.4185pt.
-<graficos/capital_infinito/fibonacci_numero_unico/frecuencia_relativa_evolucion_f_i.png, id=307, 624.05145pt x 338.9463pt>
+<graficos/capital_infinito/fibonacci_numero_unico/frecuencia_relativa_evolucion_f_i.png, id=327, 624.05145pt x 338.9463pt>
 File: graficos/capital_infinito/fibonacci_numero_unico/frecuencia_relativa_evolucion_f_i.png Graphic file (type png)
 <use graficos/capital_infinito/fibonacci_numero_unico/frecuencia_relativa_evolucion_f_i.png>
 Package pdftex.def Info: graficos/capital_infinito/fibonacci_numero_unico/frecuencia_relativa_evolucion_f_i.png  used on input line 415.
@@ -917,7 +917,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.37}) ha
                                                   \__shipout_drop_firstpage_...
 l.418 \end{figure}
                    <./graficos/capital_infinito/dalembert_numero_unico/frecuencias_multiples_d_i.png> <./graficos/capital_infinito/fibonacci_numero_unico/flujo_caja_f_i.png>]
-<graficos/capital_infinito/fibonacci_numero_unico/frecuencias_multiples_f_i.png, id=316, 617.6676pt x 338.34406pt>
+<graficos/capital_infinito/fibonacci_numero_unico/frecuencias_multiples_f_i.png, id=336, 617.6676pt x 338.34406pt>
 File: graficos/capital_infinito/fibonacci_numero_unico/frecuencias_multiples_f_i.png Graphic file (type png)
 <use graficos/capital_infinito/fibonacci_numero_unico/frecuencias_multiples_f_i.png>
 Package pdftex.def Info: graficos/capital_infinito/fibonacci_numero_unico/frecuencias_multiples_f_i.png  used on input line 421.
@@ -936,17 +936,17 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.39}) ha
                                                   \__shipout_drop_firstpage_...
 l.425 
        <./graficos/capital_infinito/fibonacci_numero_unico/corridas_5_f_i.png> <./graficos/capital_infinito/fibonacci_numero_unico/frecuencia_relativa_evolucion_f_i.png>]
-<graficos/capital_infinito/martingala_numero_unico/flujo_caja_m_i.png, id=325, 408.44595pt x 327.74445pt>
+<graficos/capital_infinito/martingala_numero_unico/flujo_caja_m_i.png, id=345, 408.44595pt x 327.74445pt>
 File: graficos/capital_infinito/martingala_numero_unico/flujo_caja_m_i.png Graphic file (type png)
 <use graficos/capital_infinito/martingala_numero_unico/flujo_caja_m_i.png>
 Package pdftex.def Info: graficos/capital_infinito/martingala_numero_unico/flujo_caja_m_i.png  used on input line 431.
 (pdftex.def)             Requested size: 375.80542pt x 301.55855pt.
-<graficos/capital_infinito/martingala_numero_unico/corridas_5_m_i.png, id=326, 610.07925pt x 338.34406pt>
+<graficos/capital_infinito/martingala_numero_unico/corridas_5_m_i.png, id=346, 610.07925pt x 338.34406pt>
 File: graficos/capital_infinito/martingala_numero_unico/corridas_5_m_i.png Graphic file (type png)
 <use graficos/capital_infinito/martingala_numero_unico/corridas_5_m_i.png>
 Package pdftex.def Info: graficos/capital_infinito/martingala_numero_unico/corridas_5_m_i.png  used on input line 437.
 (pdftex.def)             Requested size: 375.80542pt x 208.4185pt.
-<graficos/capital_infinito/martingala_numero_unico/frecuencia_relativa_evolucion_m_i.png, id=327, 624.05145pt x 338.9463pt>
+<graficos/capital_infinito/martingala_numero_unico/frecuencia_relativa_evolucion_m_i.png, id=347, 624.05145pt x 338.9463pt>
 File: graficos/capital_infinito/martingala_numero_unico/frecuencia_relativa_evolucion_m_i.png Graphic file (type png)
 <use graficos/capital_infinito/martingala_numero_unico/frecuencia_relativa_evolucion_m_i.png>
 Package pdftex.def Info: graficos/capital_infinito/martingala_numero_unico/frecuencia_relativa_evolucion_m_i.png  used on input line 443.
@@ -965,7 +965,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.41}) ha
                                                   \__shipout_drop_firstpage_...
 l.446 \end{figure}
                    <./graficos/capital_infinito/fibonacci_numero_unico/frecuencias_multiples_f_i.png> <./graficos/capital_infinito/martingala_numero_unico/flujo_caja_m_i.png>]
-<graficos/capital_infinito/martingala_numero_unico/frecuencias_multiples_m_i.png, id=336, 617.6676pt x 338.34406pt>
+<graficos/capital_infinito/martingala_numero_unico/frecuencias_multiples_m_i.png, id=356, 617.6676pt x 338.34406pt>
 File: graficos/capital_infinito/martingala_numero_unico/frecuencias_multiples_m_i.png Graphic file (type png)
 <use graficos/capital_infinito/martingala_numero_unico/frecuencias_multiples_m_i.png>
 Package pdftex.def Info: graficos/capital_infinito/martingala_numero_unico/frecuencias_multiples_m_i.png  used on input line 449.
@@ -984,17 +984,17 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.43}) ha
                                                   \__shipout_drop_firstpage_...
 l.453 
        <./graficos/capital_infinito/martingala_numero_unico/corridas_5_m_i.png> <./graficos/capital_infinito/martingala_numero_unico/frecuencia_relativa_evolucion_m_i.png>]
-<graficos/capital_infinito/martingala_invertida_numero_unico/flujo_caja_o_i.png, id=345, 425.54985pt x 327.74445pt>
+<graficos/capital_infinito/martingala_invertida_numero_unico/flujo_caja_o_i.png, id=365, 425.54985pt x 327.74445pt>
 File: graficos/capital_infinito/martingala_invertida_numero_unico/flujo_caja_o_i.png Graphic file (type png)
 <use graficos/capital_infinito/martingala_invertida_numero_unico/flujo_caja_o_i.png>
 Package pdftex.def Info: graficos/capital_infinito/martingala_invertida_numero_unico/flujo_caja_o_i.png  used on input line 459.
 (pdftex.def)             Requested size: 375.80542pt x 289.4412pt.
-<graficos/capital_infinito/martingala_invertida_numero_unico/corridas_5_o_i.png, id=346, 635.61465pt x 338.34406pt>
+<graficos/capital_infinito/martingala_invertida_numero_unico/corridas_5_o_i.png, id=366, 635.61465pt x 338.34406pt>
 File: graficos/capital_infinito/martingala_invertida_numero_unico/corridas_5_o_i.png Graphic file (type png)
 <use graficos/capital_infinito/martingala_invertida_numero_unico/corridas_5_o_i.png>
 Package pdftex.def Info: graficos/capital_infinito/martingala_invertida_numero_unico/corridas_5_o_i.png  used on input line 465.
 (pdftex.def)             Requested size: 375.80542pt x 200.04976pt.
-<graficos/capital_infinito/martingala_invertida_numero_unico/frecuencia_relativa_evolucion_o_i.png, id=347, 624.05145pt x 338.9463pt>
+<graficos/capital_infinito/martingala_invertida_numero_unico/frecuencia_relativa_evolucion_o_i.png, id=367, 624.05145pt x 338.9463pt>
 File: graficos/capital_infinito/martingala_invertida_numero_unico/frecuencia_relativa_evolucion_o_i.png Graphic file (type png)
 <use graficos/capital_infinito/martingala_invertida_numero_unico/frecuencia_relativa_evolucion_o_i.png>
 Package pdftex.def Info: graficos/capital_infinito/martingala_invertida_numero_unico/frecuencia_relativa_evolucion_o_i.png  used on input line 471.
@@ -1013,7 +1013,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.45}) ha
                                                   \__shipout_drop_firstpage_...
 l.474 \end{figure}
                    <./graficos/capital_infinito/martingala_numero_unico/frecuencias_multiples_m_i.png> <./graficos/capital_infinito/martingala_invertida_numero_unico/flujo_caja_o_i.png>]
-<graficos/capital_infinito/martingala_invertida_numero_unico/frecuencias_multiples_o_i.png, id=357, 617.6676pt x 338.34406pt>
+<graficos/capital_infinito/martingala_invertida_numero_unico/frecuencias_multiples_o_i.png, id=377, 617.6676pt x 338.34406pt>
 File: graficos/capital_infinito/martingala_invertida_numero_unico/frecuencias_multiples_o_i.png Graphic file (type png)
 <use graficos/capital_infinito/martingala_invertida_numero_unico/frecuencias_multiples_o_i.png>
 Package pdftex.def Info: graficos/capital_infinito/martingala_invertida_numero_unico/frecuencias_multiples_o_i.png  used on input line 477.
@@ -1032,17 +1032,17 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.47}) ha
                                                   \__shipout_drop_firstpage_...
 l.481 
        <./graficos/capital_infinito/martingala_invertida_numero_unico/corridas_5_o_i.png> <./graficos/capital_infinito/martingala_invertida_numero_unico/frecuencia_relativa_evolucion_o_i.png>]
-<graficos/capital_infinito/dalembert_numeros_negros/flujo_caja_d_i.png, id=366, 440.3652pt x 327.74445pt>
+<graficos/capital_infinito/dalembert_numeros_negros/flujo_caja_d_i.png, id=386, 440.3652pt x 327.74445pt>
 File: graficos/capital_infinito/dalembert_numeros_negros/flujo_caja_d_i.png Graphic file (type png)
 <use graficos/capital_infinito/dalembert_numeros_negros/flujo_caja_d_i.png>
 Package pdftex.def Info: graficos/capital_infinito/dalembert_numeros_negros/flujo_caja_d_i.png  used on input line 490.
 (pdftex.def)             Requested size: 375.80542pt x 279.7043pt.
-<graficos/capital_infinito/dalembert_numeros_negros/corridas_5_d_i.png, id=367, 619.71526pt x 338.34406pt>
+<graficos/capital_infinito/dalembert_numeros_negros/corridas_5_d_i.png, id=387, 619.71526pt x 338.34406pt>
 File: graficos/capital_infinito/dalembert_numeros_negros/corridas_5_d_i.png Graphic file (type png)
 <use graficos/capital_infinito/dalembert_numeros_negros/corridas_5_d_i.png>
 Package pdftex.def Info: graficos/capital_infinito/dalembert_numeros_negros/corridas_5_d_i.png  used on input line 496.
 (pdftex.def)             Requested size: 375.80542pt x 205.18149pt.
-<graficos/capital_infinito/dalembert_numeros_negros/frecuencia_relativa_evolucion_d_i.png, id=368, 611.28375pt x 338.9463pt>
+<graficos/capital_infinito/dalembert_numeros_negros/frecuencia_relativa_evolucion_d_i.png, id=388, 611.28375pt x 338.9463pt>
 File: graficos/capital_infinito/dalembert_numeros_negros/frecuencia_relativa_evolucion_d_i.png Graphic file (type png)
 <use graficos/capital_infinito/dalembert_numeros_negros/frecuencia_relativa_evolucion_d_i.png>
 Package pdftex.def Info: graficos/capital_infinito/dalembert_numeros_negros/frecuencia_relativa_evolucion_d_i.png  used on input line 502.
@@ -1061,7 +1061,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.49}) ha
                                                   \__shipout_drop_firstpage_...
 l.505 \end{figure}
                    <./graficos/capital_infinito/martingala_invertida_numero_unico/frecuencias_multiples_o_i.png> <./graficos/capital_infinito/dalembert_numeros_negros/flujo_caja_d_i.png>]
-<graficos/capital_infinito/dalembert_numeros_negros/frecuencias_multiples_d_i.png, id=377, 611.28375pt x 338.34406pt>
+<graficos/capital_infinito/dalembert_numeros_negros/frecuencias_multiples_d_i.png, id=397, 611.28375pt x 338.34406pt>
 File: graficos/capital_infinito/dalembert_numeros_negros/frecuencias_multiples_d_i.png Graphic file (type png)
 <use graficos/capital_infinito/dalembert_numeros_negros/frecuencias_multiples_d_i.png>
 Package pdftex.def Info: graficos/capital_infinito/dalembert_numeros_negros/frecuencias_multiples_d_i.png  used on input line 508.
@@ -1080,17 +1080,17 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.51}) ha
                                                   \__shipout_drop_firstpage_...
 l.512 
        <./graficos/capital_infinito/dalembert_numeros_negros/corridas_5_d_i.png> <./graficos/capital_infinito/dalembert_numeros_negros/frecuencia_relativa_evolucion_d_i.png>]
-<graficos/capital_infinito/fibonacci_numeros_negros/flujo_caja_f_i.png, id=386, 427.5975pt x 327.74445pt>
+<graficos/capital_infinito/fibonacci_numeros_negros/flujo_caja_f_i.png, id=406, 427.5975pt x 327.74445pt>
 File: graficos/capital_infinito/fibonacci_numeros_negros/flujo_caja_f_i.png Graphic file (type png)
 <use graficos/capital_infinito/fibonacci_numeros_negros/flujo_caja_f_i.png>
 Package pdftex.def Info: graficos/capital_infinito/fibonacci_numeros_negros/flujo_caja_f_i.png  used on input line 517.
 (pdftex.def)             Requested size: 375.80542pt x 288.04593pt.
-<graficos/capital_infinito/fibonacci_numeros_negros/corridas_5_f_i.png, id=387, 635.61465pt x 338.34406pt>
+<graficos/capital_infinito/fibonacci_numeros_negros/corridas_5_f_i.png, id=407, 635.61465pt x 338.34406pt>
 File: graficos/capital_infinito/fibonacci_numeros_negros/corridas_5_f_i.png Graphic file (type png)
 <use graficos/capital_infinito/fibonacci_numeros_negros/corridas_5_f_i.png>
 Package pdftex.def Info: graficos/capital_infinito/fibonacci_numeros_negros/corridas_5_f_i.png  used on input line 523.
 (pdftex.def)             Requested size: 375.80542pt x 200.04976pt.
-<graficos/capital_infinito/fibonacci_numeros_negros/frecuencia_relativa_evolucion_f_i.png, id=388, 611.28375pt x 338.9463pt>
+<graficos/capital_infinito/fibonacci_numeros_negros/frecuencia_relativa_evolucion_f_i.png, id=408, 611.28375pt x 338.9463pt>
 File: graficos/capital_infinito/fibonacci_numeros_negros/frecuencia_relativa_evolucion_f_i.png Graphic file (type png)
 <use graficos/capital_infinito/fibonacci_numeros_negros/frecuencia_relativa_evolucion_f_i.png>
 Package pdftex.def Info: graficos/capital_infinito/fibonacci_numeros_negros/frecuencia_relativa_evolucion_f_i.png  used on input line 529.
@@ -1109,7 +1109,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.53}) ha
                                                   \__shipout_drop_firstpage_...
 l.532 \end{figure}
                    <./graficos/capital_infinito/dalembert_numeros_negros/frecuencias_multiples_d_i.png> <./graficos/capital_infinito/fibonacci_numeros_negros/flujo_caja_f_i.png>]
-<graficos/capital_infinito/fibonacci_numeros_negros/frecuencias_multiples_f_i.png, id=397, 611.28375pt x 338.34406pt>
+<graficos/capital_infinito/fibonacci_numeros_negros/frecuencias_multiples_f_i.png, id=417, 611.28375pt x 338.34406pt>
 File: graficos/capital_infinito/fibonacci_numeros_negros/frecuencias_multiples_f_i.png Graphic file (type png)
 <use graficos/capital_infinito/fibonacci_numeros_negros/frecuencias_multiples_f_i.png>
 Package pdftex.def Info: graficos/capital_infinito/fibonacci_numeros_negros/frecuencias_multiples_f_i.png  used on input line 535.
@@ -1128,17 +1128,17 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.55}) ha
                                                   \__shipout_drop_firstpage_...
 l.539 
        <./graficos/capital_infinito/fibonacci_numeros_negros/corridas_5_f_i.png> <./graficos/capital_infinito/fibonacci_numeros_negros/frecuencia_relativa_evolucion_f_i.png>]
-<graficos/capital_infinito/martingala_numeros_negros/flujo_caja_m_i.png, id=406, 440.3652pt x 327.74445pt>
+<graficos/capital_infinito/martingala_numeros_negros/flujo_caja_m_i.png, id=426, 440.3652pt x 327.74445pt>
 File: graficos/capital_infinito/martingala_numeros_negros/flujo_caja_m_i.png Graphic file (type png)
 <use graficos/capital_infinito/martingala_numeros_negros/flujo_caja_m_i.png>
 Package pdftex.def Info: graficos/capital_infinito/martingala_numeros_negros/flujo_caja_m_i.png  used on input line 545.
 (pdftex.def)             Requested size: 375.80542pt x 279.7043pt.
-<graficos/capital_infinito/martingala_numeros_negros/corridas_5_m_i.png, id=407, 610.07925pt x 338.34406pt>
+<graficos/capital_infinito/martingala_numeros_negros/corridas_5_m_i.png, id=427, 610.07925pt x 338.34406pt>
 File: graficos/capital_infinito/martingala_numeros_negros/corridas_5_m_i.png Graphic file (type png)
 <use graficos/capital_infinito/martingala_numeros_negros/corridas_5_m_i.png>
 Package pdftex.def Info: graficos/capital_infinito/martingala_numeros_negros/corridas_5_m_i.png  used on input line 551.
 (pdftex.def)             Requested size: 375.80542pt x 208.4185pt.
-<graficos/capital_infinito/martingala_numeros_negros/frecuencia_relativa_evolucion_m_i.png, id=408, 611.28375pt x 338.9463pt>
+<graficos/capital_infinito/martingala_numeros_negros/frecuencia_relativa_evolucion_m_i.png, id=428, 611.28375pt x 338.9463pt>
 File: graficos/capital_infinito/martingala_numeros_negros/frecuencia_relativa_evolucion_m_i.png Graphic file (type png)
 <use graficos/capital_infinito/martingala_numeros_negros/frecuencia_relativa_evolucion_m_i.png>
 Package pdftex.def Info: graficos/capital_infinito/martingala_numeros_negros/frecuencia_relativa_evolucion_m_i.png  used on input line 557.
@@ -1157,7 +1157,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.57}) ha
                                                   \__shipout_drop_firstpage_...
 l.560 \end{figure}
                    <./graficos/capital_infinito/fibonacci_numeros_negros/frecuencias_multiples_f_i.png> <./graficos/capital_infinito/martingala_numeros_negros/flujo_caja_m_i.png>]
-<graficos/capital_infinito/martingala_numeros_negros/frecuencias_multiples_m_i.png, id=418, 611.28375pt x 338.34406pt>
+<graficos/capital_infinito/martingala_numeros_negros/frecuencias_multiples_m_i.png, id=438, 611.28375pt x 338.34406pt>
 File: graficos/capital_infinito/martingala_numeros_negros/frecuencias_multiples_m_i.png Graphic file (type png)
 <use graficos/capital_infinito/martingala_numeros_negros/frecuencias_multiples_m_i.png>
 Package pdftex.def Info: graficos/capital_infinito/martingala_numeros_negros/frecuencias_multiples_m_i.png  used on input line 563.
@@ -1176,17 +1176,17 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.59}) ha
                                                   \__shipout_drop_firstpage_...
 l.567 
        <./graficos/capital_infinito/martingala_numeros_negros/corridas_5_m_i.png> <./graficos/capital_infinito/martingala_numeros_negros/frecuencia_relativa_evolucion_m_i.png>]
-<graficos/capital_infinito/martingala_invertida_numeros_negros/flujo_caja_o_i.png, id=427, 433.98135pt x 327.74445pt>
+<graficos/capital_infinito/martingala_invertida_numeros_negros/flujo_caja_o_i.png, id=447, 433.98135pt x 327.74445pt>
 File: graficos/capital_infinito/martingala_invertida_numeros_negros/flujo_caja_o_i.png Graphic file (type png)
 <use graficos/capital_infinito/martingala_invertida_numeros_negros/flujo_caja_o_i.png>
 Package pdftex.def Info: graficos/capital_infinito/martingala_invertida_numeros_negros/flujo_caja_o_i.png  used on input line 573.
 (pdftex.def)             Requested size: 375.80542pt x 283.8151pt.
-<graficos/capital_infinito/martingala_invertida_numeros_negros/corridas_5_o_i.png, id=428, 635.61465pt x 338.34406pt>
+<graficos/capital_infinito/martingala_invertida_numeros_negros/corridas_5_o_i.png, id=448, 635.61465pt x 338.34406pt>
 File: graficos/capital_infinito/martingala_invertida_numeros_negros/corridas_5_o_i.png Graphic file (type png)
 <use graficos/capital_infinito/martingala_invertida_numeros_negros/corridas_5_o_i.png>
 Package pdftex.def Info: graficos/capital_infinito/martingala_invertida_numeros_negros/corridas_5_o_i.png  used on input line 579.
 (pdftex.def)             Requested size: 375.80542pt x 200.04976pt.
-<graficos/capital_infinito/martingala_invertida_numeros_negros/frecuencia_relativa_evolucion_o_i.png, id=429, 611.28375pt x 338.9463pt>
+<graficos/capital_infinito/martingala_invertida_numeros_negros/frecuencia_relativa_evolucion_o_i.png, id=449, 611.28375pt x 338.9463pt>
 File: graficos/capital_infinito/martingala_invertida_numeros_negros/frecuencia_relativa_evolucion_o_i.png Graphic file (type png)
 <use graficos/capital_infinito/martingala_invertida_numeros_negros/frecuencia_relativa_evolucion_o_i.png>
 Package pdftex.def Info: graficos/capital_infinito/martingala_invertida_numeros_negros/frecuencia_relativa_evolucion_o_i.png  used on input line 585.
@@ -1205,7 +1205,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.61}) ha
                                                   \__shipout_drop_firstpage_...
 l.588 \end{figure}
                    <./graficos/capital_infinito/martingala_numeros_negros/frecuencias_multiples_m_i.png> <./graficos/capital_infinito/martingala_invertida_numeros_negros/flujo_caja_o_i.png>]
-<graficos/capital_infinito/martingala_invertida_numeros_negros/frecuencias_multiples_o_i.png, id=438, 611.28375pt x 338.34406pt>
+<graficos/capital_infinito/martingala_invertida_numeros_negros/frecuencias_multiples_o_i.png, id=458, 611.28375pt x 338.34406pt>
 File: graficos/capital_infinito/martingala_invertida_numeros_negros/frecuencias_multiples_o_i.png Graphic file (type png)
 <use graficos/capital_infinito/martingala_invertida_numeros_negros/frecuencias_multiples_o_i.png>
 Package pdftex.def Info: graficos/capital_infinito/martingala_invertida_numeros_negros/frecuencias_multiples_o_i.png  used on input line 591.
@@ -1224,16 +1224,19 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.63}) ha
                                                   \__shipout_drop_firstpage_...
 l.595 
        <./graficos/capital_infinito/martingala_invertida_numeros_negros/corridas_5_o_i.png> <./graficos/capital_infinito/martingala_invertida_numeros_negros/frecuencia_relativa_evolucion_o_i.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 637--638
+Underfull \vbox (badness 1924) has occurred while \output is active []
 
- []
-
-[35
+ [35
 pdfTeX warning (ext4): destination with the same identifier (name{figure.64}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.649 \end{document}
-                     <./graficos/capital_infinito/martingala_invertida_numeros_negros/frecuencias_multiples_o_i.png>] (main.aux
+l.624 A
+       l utilizar la estrategia de "Números Negros" el capital muestra una ... <./graficos/capital_infinito/martingala_invertida_numeros_negros/frecuencias_multiples_o_i.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 660--661
+
+ []
+
+[36] (main.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
@@ -1242,20 +1245,20 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2026-03-20>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 3D9F527DA80BCDBD2CA2894E413E5F3B;5855.
+(rerunfilecheck)             Checksum: B4332A8E57CCD91F6FE563A9A3199594;6579.
  ) 
 Here is how much of TeX's memory you used:
- 14620 strings out of 467691
- 271692 string characters out of 5414987
- 782580 words of memory out of 5000000
- 43227 multiletter control sequences out of 15000+600000
- 665555 words of font info for 148 fonts, out of 8000000 for 9000
+ 14644 strings out of 467691
+ 271956 string characters out of 5414987
+ 782583 words of memory out of 5000000
+ 43233 multiletter control sequences out of 15000+600000
+ 666075 words of font info for 156 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,1113b,502s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,12n,79p,1113b,502s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\lucia\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1000.pk><C:/Users/lucia/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/lucia/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb>
-Output written on main.pdf (35 pages, 21082298 bytes).
+Output written on main.pdf (36 pages, 21087592 bytes).
 PDF statistics:
- 540 PDF objects out of 1000 (max. 8388607)
- 132 named destinations out of 1000 (max. 500000)
- 37401 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 565 PDF objects out of 1000 (max. 8388607)
+ 138 named destinations out of 1000 (max. 500000)
+ 37441 words of extra memory for PDF output out of 42996 (max. 10000000)
 
