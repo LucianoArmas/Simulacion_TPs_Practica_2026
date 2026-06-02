@@ -1,0 +1,72 @@
+==============================================================================
+TP 2.1 - Pruebas de generadores pseudoaleatorios  (n=10000, alpha=0.05)
+==============================================================================
+
+RESUMEN DE VEREDICTOS (OK = no se rechaza H0)
+
+Generador             Chi-cuadr  Kolmogoro     Rachas      Póker  Autocorre
+---------------------------------------------------------------------------
+GCL                          OK         OK         OK         OK         OK
+RANDU                        OK         OK         OK         OK         OK
+Cuadrados Medios          ERROR      ERROR      ERROR      ERROR      ERROR
+Python (Mersenne)            OK         OK         OK         OK         OK
+
+------------------------------------------------------------------------------
+GCL
+------------------------------------------------------------------------------
+   media = 0.49877   (esperada 0.5)   varianza = 0.08301   (esperada 0.08333)
+   Chi-cuadrado (uniformidad)   estad= 14.1600  p-valor=0.1167  -> OK
+        k=10 intervalos, gl=9, chi2_critico=16.919
+   Kolmogorov-Smirnov           estad= 0.0060  p-valor=0.8673  -> OK
+        D_critico≈0.0136 (alpha=0.05)
+   Rachas (arriba/abajo)        estad= 1.0357  p-valor=0.3003  -> OK
+        R=6710, E[R]=6666.3, Z_critico=±1.960
+   Póker                        estad= 2.9055  p-valor=0.4064  -> OK
+        gl=3, chi2_critico=7.815, obs={'5 dist': 3025, '4 dist': 5103, '3 dist': 1740, '<=2 dist': 132}
+   Autocorrelación (lag=1)      estad=-1.5310  p-valor=0.1258  -> OK
+        rho_1=-0.01531, Z_critico=±1.960
+
+------------------------------------------------------------------------------
+RANDU
+------------------------------------------------------------------------------
+   media = 0.50016   (esperada 0.5)   varianza = 0.08289   (esperada 0.08333)
+   Chi-cuadrado (uniformidad)   estad= 8.8120  p-valor=0.4548  -> OK
+        k=10 intervalos, gl=9, chi2_critico=16.919
+   Kolmogorov-Smirnov           estad= 0.0064  p-valor=0.8113  -> OK
+        D_critico≈0.0136 (alpha=0.05)
+   Rachas (arriba/abajo)        estad=-0.9330  p-valor=0.3508  -> OK
+        R=6627, E[R]=6666.3, Z_critico=±1.960
+   Póker                        estad= 2.0124  p-valor=0.5698  -> OK
+        gl=3, chi2_critico=7.815, obs={'5 dist': 2989, '4 dist': 5110, '3 dist': 1768, '<=2 dist': 133}
+   Autocorrelación (lag=1)      estad= 1.3279  p-valor=0.1842  -> OK
+        rho_1=0.01328, Z_critico=±1.960
+
+------------------------------------------------------------------------------
+Cuadrados Medios
+------------------------------------------------------------------------------
+   media = 0.00151   (esperada 0.5)   varianza = 0.00074   (esperada 0.08333)
+   Chi-cuadrado (uniformidad)   estad= 89221.7720  p-valor=0.0000  -> ERROR
+        k=10 intervalos, gl=9, chi2_critico=16.919
+   Kolmogorov-Smirnov           estad= 0.9949  p-valor=0.0000  -> ERROR
+        D_critico≈0.0136 (alpha=0.05)
+   Rachas (arriba/abajo)        estad=-157.3850  p-valor=0.0000  -> ERROR
+        R=31, E[R]=6666.3, Z_critico=±1.960
+   Póker                        estad= 718106.1730  p-valor=0.0000  -> ERROR
+        gl=3, chi2_critico=7.815, obs={'5 dist': 9, '4 dist': 24, '3 dist': 16, '<=2 dist': 9951}
+   Autocorrelación (lag=1)      estad= 60.6693  p-valor=0.0000  -> ERROR
+        rho_1=0.60672, Z_critico=±1.960
+
+------------------------------------------------------------------------------
+Python (Mersenne)
+------------------------------------------------------------------------------
+   media = 0.49647   (esperada 0.5)   varianza = 0.08337   (esperada 0.08333)
+   Chi-cuadrado (uniformidad)   estad= 5.8840  p-valor=0.7515  -> OK
+        k=10 intervalos, gl=9, chi2_critico=16.919
+   Kolmogorov-Smirnov           estad= 0.0077  p-valor=0.5861  -> OK
+        D_critico≈0.0136 (alpha=0.05)
+   Rachas (arriba/abajo)        estad= 0.0633  p-valor=0.9496  -> OK
+        R=6669, E[R]=6666.3, Z_critico=±1.960
+   Póker                        estad= 4.6058  p-valor=0.2030  -> OK
+        gl=3, chi2_critico=7.815, obs={'5 dist': 3034, '4 dist': 5000, '3 dist': 1806, '<=2 dist': 160}
+   Autocorrelación (lag=1)      estad= 1.7280  p-valor=0.0840  -> OK
+        rho_1=0.01728, Z_critico=±1.960
