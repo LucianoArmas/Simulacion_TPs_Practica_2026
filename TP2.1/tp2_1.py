@@ -258,8 +258,7 @@ def test_poker(u: Sequence[float], alpha: float = 0.05) -> ResultadoTest:
         4 distintos (un par)                         p = 0.5040
         3 distintos (dos pares o trío)               p = 0.1800
         <=2 distintos (full, póker o quintilla)      p = 0.0136
-    (Las dos últimas manos puras se agrupan para evitar frecuencias
-    esperadas demasiado pequeñas.)  -> 4 categorías, gl = 3.
+    (Las dos últimas manos puras se agrupan para evitar frecuencias esperadas demasiado pequeñas.)  -> 4 categorías, gl = 3.
     """
     u = np.asarray(u, dtype=float)
     categorias = {"5 dist": 0, "4 dist": 0, "3 dist": 0, "<=2 dist": 0}
@@ -662,9 +661,9 @@ def figura_randu_3d(u: Sequence[float]) -> None:
 # --------------------------------------------------------------------------- #
 def main() -> None:
     resultados, muestras = correr_pruebas()
-    # imprimir_y_guardar(resultados, muestras)
-    # figura_histogramas(muestras)
-    # figura_dispersion(muestras)
+    imprimir_y_guardar(resultados, muestras)
+    figura_histogramas(muestras)
+    figura_dispersion(muestras)
     figura_randu_3d(muestras["RANDU"])
     print(f"\n[figuras guardadas en {os.path.abspath(DIR_FIG)}]")
 

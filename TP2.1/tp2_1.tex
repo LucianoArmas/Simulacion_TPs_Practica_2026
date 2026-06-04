@@ -4,7 +4,8 @@
 \usepackage{arxiv}
 
 \usepackage[utf8]{inputenc} % allow utf-8 input
-\usepackage[spanish]{babel}
+\usepackage[spanish,es-tabla]{babel}
+
 \usepackage[T1]{fontenc}    % use 8-bit T1 fonts
 \usepackage{hyperref}       % hyperlinks
 \usepackage{url}            % simple URL typesetting
@@ -16,9 +17,11 @@
 \usepackage{graphicx}
 \usepackage{fancyhdr}
 \usepackage{float}
+\usepackage{amssymb}
 
 
-\title{TP 1.1 Simulación de una ruleta}
+
+\title{TP 2.1 Generadores Pseudoaleatorios}
 
 
 \author{
@@ -29,12 +32,6 @@
   \texttt{tlardizabal1@gmail.com} \\
   %% examples of more authors
    \And
- Iñaki Díaz\\
-  Legajo 48944\\
-  Universidad Tecnológica Nacional - FRRO\\
-  Zeballos 1341, S2000, Argentina \\
-  \texttt{inakidiaz2808@gmail.com} \\
-    \And
  Tomás Splivalo\\
   Legajo 51665 \\
   Universidad Tecnológica Nacional - FRRO\\
@@ -55,22 +52,323 @@
 
 \pagestyle{fancy}
 \fancyhead{} % Elimina encabezado predeterminado
-\rhead{Simulación de una ruleta, \today}
+\rhead{Generadores Pseudoaleatorios \today}
 
 \begin{abstract}
-Mediante el siguiente estudio se pretende realizar un análisis y evaluación de las distintas estrategias de juego en la ruleta a través de simulaciones en lenguaje Python, contemplando dos escenarios distintos: 
-\begin{itemize}
-  \item Uno en el cual el jugador posee un capital infinito
-  \item Otro escenario en el que el jugador posee un capital acotado.
-\end{itemize}
- El objetivo es conocer si hay posibilidades de lograr resultados positivos que hagan crecer el capital apostado.
-Se evalúan las estrategias Martingala, Martingala Invertida, Fibonacci y D'Alembert.
+Este trabajo aborda la generación de números pseudoaleatorios, uno de los componentes fundamentales de toda simulación estocástica. Se implementaron en Python 3.x cuatro generadores: un Generador Congruencial Lineal (GCL), el generador histórico RANDU, el método de los cuadrados medios de Von Neumann y, como referencia, el generador estándar de Python (Mersenne Twister). Sobre cada uno se aplicó una batería de cinco pruebas estadísticas —chi-cuadrado de uniformidad, Kolmogorov-Smirnov, rachas, póker y autocorrelación— con un nivel de significación $\alpha$ = 0,05 y muestras de n = 10 000 valores. Los resultados muestran que el GCL y Mersenne Twister superan todas las pruebas unidimensionales, que el método de los cuadrados medios degenera rápidamente, y, de modo especialmente ilustrativo, que RANDU aprueba todas las pruebas unidimensionales pese a contener una grave estructura reticular que solo se revela al analizar las ternas de valores en el espacio tridimensional. Se concluye que ningún conjunto finito de pruebas garantiza la calidad de un generador y que el análisis multidimensional es indispensable.
 \end{abstract}
 
 
 \section{Introducción}
-El juego de la ruleta ha sido analizado desde múltiples enfoques, tanto lúdicos como científicos, para responder a la pregunta de si existe algún algoritmo que pueda predecir la aleatoriedad de este juego, permitiéndonos obtener beneficios.
-En este informe pondremos a prueba algunas de las famosas estrategias de apuestas para analizar su comportamiento a lo largo de múltiples tiradas y estudiar las probabilidades de obtener ganancia con cada estrategia, tomando una ruleta europea ideal.
+Un número pseudoaleatorio es un valor producido por un proceso que aparenta generar números al azar pero que, en realidad, es completamente determinista: ante las mismas condiciones iniciales el algoritmo produce siempre la misma secuencia. Pese a ello, una buena secuencia pseudoaleatoria no exhibe —desde un punto de vista estadístico— ningún patrón ni regularidad aparente.
+
+La distinción frente a los generadores de números aleatorios reales (o hardware random number generators) es conceptual: estos últimos obtienen su entropía de fenómenos físicos impredecibles (ruido térmico, desintegración radiactiva, ruido atmosférico, etc.). Algunos ejemplos son el servicio RANDOM.ORG que emplea ruido atmosférico para generar numeros aleatorios, y el generador británico ERNIE que sortea premios usando ruido térmico. La contrapartida de estos tipos de generadores es que son lentos, no reproducibles y dependen de hardware específico. 
+
+Los generadores pseudoaleatorios, en cambio, son rápidos, portables y reproducibles —propiedad esencial para depurar simulaciones—, a cambio de ser, en última instancia, predecibles
+
+El presente trabajo tiene tres objetivos:
+\begin{itemize}
+  \item Implementar al menos dos generadores pseudoaleatorios, en particular el Generador Congruencial Lineal (GCL)
+  \item Someter los generadores a un mínimo de cuatro pruebas estadísticas que evalúen la calidad de la generación
+  \item Comparar los generadores implementados entre sí y contra el generador que provee el propio lenguaje Python
+\end{itemize}
+
+\section{Marco Teórico}
+\subsection{Generador Congruencial Lineal (GCL)}
+El GCL es el generador pseudoaleatorio más difundido. Se define por la relación de recurrencia
+\begin{equation}
+X_{n+1} = (aX_n + c) \bmod m
+\end{equation}
+\begin{itemize}
+  \item $m$ > 0 es el módulo
+  \item 0 < $a$ < $m$ el multiplicador
+  \item 0 \(\le \) $c$ < $m$ el incremento
+  \item $X_0$ la semilla
+\end{itemize}
+
+Cuando $c$ \(\neq \) 0 se denomina $mixto$, cuando $c$ = 0 se denomina $multiplicativo$. 
+El período de un generador es la longitud de la secuencia antes de que esta comience a repetirse. El período máximo de un GCL es $m$, y se alcanza si se cumplen ciertas condiciones sobre los parámetros $a$, $c$ y $m$.
+Según el teorema de Hull y Dobell, para que el GCL tenga un período máximo de $m$, se deben cumplir las siguientes condiciones:
+\begin{itemize}
+  \item $c$ y $m$ son coprimos
+  \item $(a-1)$ es divisible por todos los factores primos de $m$
+  \item $(a-1)$ es divisible por 4 si $m$ es divisible por 4
+\end{itemize}
+
+En este trabajo se usaron los parámetros de Numerical Recipes (a = 1 664 525, c = 1 013 904 223, m = 232), que satisfacen las tres condiciones y por lo tanto producen período completo
+
+
+\subsection{Generador RANDU}
+RANDU es un GCL multiplicativo que fue utilizado en los años 60.
+\begin{equation}
+X_{n+1} = (65539 \cdot X_n) \bmod 2^{31}
+\end{equation}
+
+Aunque sus valores individuales lucen uniformes, las ternas consecutivas ($u_i$, $u_{i+1}$, $u_{i+2}$) caen sobre apenas 15 planos paralelos en el espacio tridimensional, lo que revela una estructura reticular que lo hace inadecuado para simulaciones serias. 
+
+Esto se debe a la relacion exacta entre estados consecutivos.
+
+Considerando 65539 = 2 $^{16}$ + 3 puede demostrarse que los términos consecutivos satisfacen la congruencia:
+
+\begin{equation}
+X_{n+2} - 6X_{n+1} + 9X_n \equiv 0 \bmod{2^{31}}
+\end{equation}
+
+O equivalentemente:
+\begin{equation}
+9X_n - 6X_{n+1} + X_{n+2} \equiv 0 \bmod{2^{31}}
+\end{equation}
+
+Si representamos cada terna consecutiva como un punto:
+\begin{equation}
+(X_n, X_{n+1}, X_{n+2})
+\end{equation}
+
+entonces todos esos puntos satisfacen una ecuación de la forma:
+\begin{equation}
+9x - 6y + z = k\,2^{31}
+\end{equation}
+para algún entero $k$.
+
+Entonces $(9,-6,1)$ es el vector normal a esos planos. Es decir, indica la orientación de los planos sobre los que caen las ternas generadas por RANDU.
+
+
+A pesar de esta falla, RANDU aprueba todas las pruebas unidimensionales, lo que ilustra la importancia de realizar análisis multidimensionales.
+
+
+\subsection{Método de los cuadrados medios}
+Propuesto por John von Neumann en 1946, parte de una semilla de $d$ dígitos, la eleva al cuadrado, completa con ceros a la izquierda hasta $2d$ dígitos y extrae los d dígitos centrales como nuevo estado. Es históricamente importante pero de pésima calidad: presenta períodos cortos y tiende a colapsar a cero o a ciclos triviales. Se incluye para exhibir esos defectos.
+
+\subsection{Mersenne Twister}
+Es el generador por defecto del módulo $random$ de Python. Posee un período de 2$^{19937}$-1 y excelentes propiedades de equidistribución en hasta 623 dimensiones. Se utiliza como patrón de comparación de alta calidad. (No es criptográficamente seguro, pero ese aspecto excede los objetivos del trabajo.)
+
+
+\subsection{Pruebas estadísticas}
+Toda prueba contrasta la hipótesis nula
+\begin{center}
+$H_0$: "los números generados provienen de una distribución uniforme en el intervalo [0,1)"
+\end{center}
+
+Se rechaza $H_0$ cuando el p-valor es menor que $\alpha$. Un veredicto “OK” indica que no hay evidencia para rechazar la aleatoriedad. 
+
+Las pruebas de uniformidad (chi-cuadrado, Kolmogorov-Smirnov) evalúan la distribución; las de independencia (rachas, póker, autocorrelación) evalúan la ausencia de correlación entre valores.
+
+\textbf{Chi-cuadrado de uniformidad}: divide el intervalo [0,1) en $k$ subintervalos de igual longitud, cuenta cuántos valores caen en cada uno y compara con la frecuencia esperada $n/k$.
+Si $O_i$ es la frecuencia observada en el subintervalo $i$ y $E_i$ la frecuencia esperada
+\begin{equation}
+\chi^2 = \sum_{i=1}^k \frac{(O_i - E_i)^2}{E_i} \thicksim \chi^2_{k-1}
+\end{equation}
+
+\textbf{Kolmogorov-Smirnov}: compara la distribución empírica $F_n$ de la muestra con la distribución acumulada teórica $F(x)=x$ de una distribución uniforme $U(0,1)$.
+\begin{equation}
+D_n = \sup_x |F_n(x) - F(x)|
+\end{equation}
+Para $\alpha$ = 0,05 el valor crítico es aproximadamente $D_c \approx 1,36 / \sqrt{n}$.
+
+
+\textbf{Test de rachas (arriba y abajo)}: evalúa la independencia de los valores al contar el número $R$ de rachas (secuencias consecutivas de valores por encima o por debajo de la mediana). Para una muestra $n$ grande, el número $R$ es aproximadamente normal con:
+\begin{equation}
+\mu_R = \frac{2n - 1}{3}, \quad \sigma_R = \sqrt{\frac{16n - 29}{90}}, \quad Z = \frac{R - \mu_R}{\sigma_R} \thicksim N(0,1)
+\end{equation}
+
+
+\textbf{Test de póker}: Toma los 5 primeros decimales de cada valor y los clasifica según la cantidad de dígitos distintos que contienen. Las probabilidades teóricas (dígitos de {0, . . . , 9} con repetición) son: 5 distintos $p$ = 0,3024; 4 distintos $p$ = 0,5040; 3 distintos $p$ = 0,1800; y \(\le \) 2 distintos $p$ = 0,0136 (las manos altas se agrupan para evitar frecuencias esperadas demasiado pequeñas). Se aplica entonces el estadistico de chi-cuadrado con 4 categorías y 3 grados de libertad.
+
+\textbf{Test de autocorrelación}: Mide la correlación de la serie consigo misma desplazada k posiciones. Bajo independencia, el coeficiente $r_k$ es aproximadamente N(0, 1/(n - k)), de modo que
+
+\begin{equation}
+r_k = \frac{\sum_{i=1}^{n-k} (u_i - \bar{u})(u_{i+k} - \bar{u})}{\sum_{i=1}^n (u_i - \bar{u})^2}
+\end{equation}
+
+\section{Implementación}
+El programa desarrollado consta de tres bloques:
+\begin{itemize}
+  \item los generadores pseudoaleatorios (cuatro clases)
+  \item las pruebas estadísticas (cinco funciones)
+  \item orquestación que ejecuta las pruebas sobre cada generador y muestra los resultados
+\end{itemize}
+
+Todos los generadores exponen el método $uniformes(n)$ que devuelve una lista de $n$ números pseudoaleatorios en el intervalo [0,1), lo que permite probarlos de manera homogénea.
+
+
+\section{Resultados y Conclusiones}
+Se generaron n = 10 000 valores con cada generador y se ejecutó la batería de pruebas con $\alpha$ = 0,05.
+
+La Tabla 1 resume los veredictos. "OK" indica que no se rechaza $H_0$ (la secuencia pasa la prueba); "ERROR" indica que se rechaza $H_0$.
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{ c  c  c  c  c  c }
+Generador & Chi-cuad. & K-S & Rachas & Póker & Autocorr \\
+\hline
+GCL & OK & OK & OK & OK & OK \\
+RANDU & OK & OK & OK & OK & OK \\
+Cuadrados Medios & ERROR & ERROR & ERROR & ERROR & ERROR \\
+Python (Mersenne) & OK & OK & OK & OK & OK \\
+\hline
+\end{tabular}
+\caption{Resultados de veredictos}
+\end{center}
+\end{table}
+
+
+
+Tabla 2 reporta los estadísticos y $p-valores$ obtenidos (entre paréntesis).
+Para chi-cuadrado y póker se reporta el valor de $\chi^2$; para K-S, el estadístico $D$; para rachas y autocorrelación, el valor $Z$.
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{ c  c  c  c  c  c }
+Generador & Chi-cuad. & K-S & Rachas & Póker & Autocorr \\
+\hline
+GCL & 14,16 & 0,0060 & 1,04 & 2,91 & -1,53 \\
+ & (0,117) & (0,867) & (0,300) & (0,406) & (0,126) \\
+RANDU & 8,81 & 0,0064 & -0,93 & 2,01 & 1,33 \\
+ & (0,455) & (0,811) & (0,351) & (0,570) & (0,184) \\
+Cuadrados Medios & 89 & 221,8 & 0,9949 & -157,4 & 718 \\
+ & (0,000) & (0,000) & (0,000) & (0,000) & (0,000) \\
+Python (Mersenne) & 5,88 & 0,0077 & 0,06 & 4,61 & 1,73 \\
+ & (0,752) & (0,586) & (0,950) & (0,203) & (0,084) \\
+\hline
+\end{tabular}
+\caption{Resultados de estadísticos}
+\end{center}
+\end{table}
+
+
+
+Adicionalmente se calcularon la media y la varianza muestrales, cuyos valores teóricos para una $U(0, 1)$ son 0,5 y 1/12 \(\approx\) 0,0833 respectivamente (Tabla 3).
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{ c  c  c }
+Generador & Media & Varianza \\
+\hline
+GCL & 0,4988 & 0,0830 \\
+RANDU & 0,5002 & 0,0829 \\
+Cuadrados Medios & 0,0015 & 0,0007 \\
+Python (Mersenne) & 0,4965 & 0,0834 \\
+\hline
+\textbf{Valor teórico} & 0,5000 & 0,0833 \\
+\hline
+\end{tabular}
+\caption{Resultados de estadísticos}
+\end{center}
+\end{table}
+
+\subsection{Conclusiones por generador}
+\textbf{GCL}: Supera todas las pruebas, con estadísticos y p-valores que no sugieren anomalías. La media y varianza muestrales están muy cerca de los valores teóricos. Su histograma (Figura 1) es plano y el diagrama de dispersión de retardo (Figura 2) cubre uniformemente el cuadrado unitario. Se concluye que el GCL con los parámetros elegidos es un generador de buena calidad para simulaciones generales.
+
+\textbf{Cuadrados Medios}: Falla todas las pruebas con estadísticos extremadamente altos y p-valores nulos. La media y varianza muestrales son muy inferiores a los valores teóricos, lo que indica una concentración de valores cercanos a cero. El histograma (Figura 1). Se concluye que el método de los cuadrados medios es un generador de pésima calidad, inadecuado para cualquier simulación seria.
+
+
+\textbf{Python (Mersenne Twister)}: Supera todas las pruebas con p-valores cómodos y momentos prácticamente idénticos a los teóricos. La media y varianza muestrales están muy cerca de los valores teóricos. El histograma (Figura 1) es plano y el diagrama de dispersión de retardo (Figura 2) cubre uniformemente el cuadrado unitario. Se concluye que el generador estándar de Python es de excelente calidad, como era de esperar.
+
+
+\textbf{RANDU}: Supera todas las pruebas unidimensionales con p-valores que no sugieren anomalías. La media y varianza muestrales están muy cerca de los valores teóricos. El histograma (Figura 1) es plano. Sin embargo, poseee un defecto grave. En las figuras 3, 4 y 5 se observa que las ternas ($u_i$, $u_{i+1}$, $u_{i+2}$) en el cubo unitario aparentan estar distribuidas aleatoriamente, pero en las figuras 6 y 7 se ve claramente una distribucion en planos paralelos (dichos planos tienen como vector normal (9,-6,1)). Se concluye que, a pesar de aprobar pruebas unidimensionales, RANDU es un generador inadecuado para simulaciones serias debido a su estructura reticular multidimensional.
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.8\linewidth]{figuras/histogramas.png}
+    \caption{Histogramas de uniformidad (20 intervalos). GCL, RANDU y Python son planos; Cuadrados Medios concentra casi todos los valores en el primer intervalo (nótese la escala del eje vertical).}
+    \label{fig:histogramas-1}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.8\linewidth]{figuras/dispersion.png}
+    \caption{Diagramas de dispersión de retardo ($u_i$ vs $u_{i+1}$). GCL, RANDU y Python cubren el cuadrado unitario; Cuadrados Medios degenera a un puñado de puntos cerca del origen.}
+    \label{fig:dispersion-1}
+\end{figure}
+
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.8\linewidth]{figuras/randu_3d_vista_1.png}
+    \caption{Distribución de ternas en el cubo unitario (RANDU) con vector normal (9,-6,1).}
+    \label{fig:randu_3d_vista_1}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.8\linewidth]{figuras/randu_3d_vista_2.png}
+    \caption{Distribución de ternas en el cubo unitario (RANDU) con vector normal (9,-6,1).}
+    \label{fig:randu_3d_vista_2}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.8\linewidth]{figuras/randu_3d_vista_3.png}
+    \caption{Distribución de ternas en el cubo unitario (RANDU) con vector normal (9,-6,1).}
+    \label{fig:randu_3d_vista_3}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.8\linewidth]{figuras/randu_3d_vista_4.png}
+    \caption{Distribución de ternas en el cubo unitario (RANDU) con vector normal (9,-6,1).}
+    \label{fig:randu_3d_vista_4}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.8\linewidth]{figuras/randu_15_planos.png}
+    \caption{Distribución de ternas en el cubo unitario (RANDU) con vector normal (9,-6,1).}
+    \label{fig:randu_15_planos}
+\end{figure}
+
+\section{Conclusiones}
+A partir de la implementación y prueba de cuatro generadores se pueden extraer las siguientes conclusiones:
+
+\begin{itemize}
+  \item El \textbf{GCL} con parámetros adecuados  (los de Numerical Recipes) es un generador de buena calidad para simulaciones generales. Supera las cinco pruebas estadísticas y es indistinguible. La elección de los parámetros a, c y m es decisiva; deben cumplir las condiciones de Hull-Dobell para garantizar período completo.
+  \item El \textbf{método de los cuadrados medios} es un generador de pésima calidad, inadecuado para cualquier simulación seria.
+  \item El generador estándar de \textbf{Python (Mersenne Twister)} es de excelente calidad, como era de esperar.
+  \item \textbf{RANDU}, a pesar de aprobar pruebas unidimensionales, es un generador inadecuado para simulaciones serias debido a su estructura reticular multidimensional. A pesar de que aprueba las pruebas no garantiza la calidad del generador.
+\end{itemize}
+
+En síntesis, un buen generador para simulación debe ser rápido, reproducible, de período largo y, sobre todo, debe superar baterías de pruebas tanto uni- como multidimensionales.
+La uniformidad y la independencia observadas en una dimensión son condiciones necesarias, pero de ningún modo
+suficientes.
+
+
+
+
+
+
+\bibliographystyle{unsrt}  
+
+
+\renewcommand{\refname}{Bibliografía}
+
+\begin{thebibliography}{1}
+
+\bibitem{referencia1}
+Ortiz, T. (2018). Estadística Computacional — Números pseudoaleatorios.\\
+\url{https://tereom.github.io/est-computacional-2018/numeros-pseudoaleatorios.html}
+
+\bibitem{referencia2}
+RANDOM.ORG. Statistical Analysis.\\
+\url{https://www.random.org/analysis/}
+
+\bibitem{referencia3}
+Knuth, D. E. (1997). The Art of Computer Programming, Vol. 2: Seminumerical Algorithms (3.a ed.). AddisonWesley.\\
+
+\bibitem{referencia4}
+LEcuyer, P. (1994). Uniform random number generation. Annals of Operations Research, 53(1), 77-120.\\
+
+\bibitem{referencia5}
+Press, W. H., Teukolsky, S. A., Vetterling, W. T. and Flannery B. P. (2007). Numerical Recipes: The Art of Scientific Computing (3.a ed.). Cambridge University Press.\\
+
+\bibitem{referencia6}
+Marsaglia, G. (1968). Random numbers fall mainly in the planes. Proceedings of the National Academy of Sciences, 61(1), 25-28.\\
+
+\bibitem{referencia7}
+Matsumoto, M. and Nishimura, T. (1998). Mersenne Twister: a 623-dimensionally equidistributed uniform pseudorandom number generator. ACM Transactions on Modeling and Computer Simulation, 8(1), 3-30.\\
+
+
+\end{thebibliography}
+
+
 
 
 
