@@ -2,5 +2,7 @@
 !main.pdf
 !SIMULACIÓN_2026_TP*
 imgs
+*.txt
+!resultados.txt
 *md
 *.png
