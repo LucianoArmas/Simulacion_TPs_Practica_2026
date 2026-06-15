@@ -28,12 +28,12 @@ def u():
 
 # ---------------------------- UNIFORME (a, b) ------------------------------
 def uniforme_inversa(a, b):
-    """Transformación inversa.  F(x) = (x-a)/(b-a)  =>  x = a + (b-a)*r   (4-23)."""
+    """Transformación inversa.  F(x) = (x-a)/(b-a)  =>  x = a + (b-a)*r."""
     return a + (b - a) * u()
 
 
 def uniforme_rechazo(a, b):
-    """Método de rechazo (4-12..4-14).
+    """Método de rechazo.
 
     f(x) = 1/(b-a) constante. Se escala con c = (b-a) para que c*f(x) = 1.
     x = a + (b-a)*r1 ;  se acepta si  r2 <= c*f(x).  Como c*f(x)=1, siempre
@@ -51,13 +51,13 @@ def uniforme_rechazo(a, b):
 
 # ---------------------------- EXPONENCIAL (EX) -----------------------------
 def exponencial_inversa(ex):
-    """Transformación inversa.  r = e^(-alpha*x)  =>  x = -EX*ln(r)   (4-30).
+    """Transformación inversa.  r = e^(-alpha*x)  =>  x = -EX*ln(r).
     ex = EX = media = 1/alpha."""
     return -ex * math.log(u())
 
 
 def exponencial_von_neumann(ex=1.0):
-    """Método de rechazo de Von Neumann (4-31), sin usar logaritmo.
+    """Método de rechazo de Von Neumann, sin usar logaritmo.
 
     Genera corridas decrecientes de uniformes y acepta según su paridad.
     Produce Exp(media=1) y luego se escala por EX.
@@ -82,7 +82,7 @@ def exponencial_von_neumann(ex=1.0):
 def gamma_erlang(alpha, k):
     """Distribución gamma con k entero (Erlang): suma de k exponenciales.
 
-    x = -(1/alpha) * ln( PROD r_i )    (4-53 / 4-54).
+    x = -(1/alpha) * ln( PROD r_i ).
     EX = k/alpha ,  VX = k/alpha^2.
     """
     prod = 1.0
@@ -92,7 +92,7 @@ def gamma_erlang(alpha, k):
 
 
 def gamma_parametros(ex, vx):
-    """Deriva (alpha, k) a partir de la media y la varianza  (4-51, 4-52)."""
+    """Deriva (alpha, k) a partir de la media y la varianza."""
     alpha = ex / vx
     k = round(ex * ex / vx)
     return alpha, k
@@ -100,7 +100,7 @@ def gamma_parametros(ex, vx):
 
 # ------------------------------ NORMAL (mu, sigma) -------------------------
 def normal_limite_central(mu, sigma):
-    """Método del límite central con K=12  (4-75).
+    """Método del límite central con K=12.
 
     x = sigma * (SUM_{i=1}^{12} r_i - 6) + mu.
     Con K=12 se evita la multiplicación por sqrt(12/K) y queda truncada a +/-6 sigma.
@@ -112,7 +112,7 @@ def normal_limite_central(mu, sigma):
 
 
 def normal_box_muller(mu, sigma):
-    """Procedimiento directo de Box-Muller  (4-81 / 4-82), resultado exacto."""
+    """Procedimiento directo de Box-Muller, resultado exacto."""
     r1 = u()
     r2 = u()
     z = math.sqrt(-2.0 * math.log(r1)) * math.cos(2.0 * math.pi * r2)
@@ -127,11 +127,10 @@ def normal_box_muller(mu, sigma):
 def pascal(k, p):
     """Distribución de Pascal (binomial negativa con k entero).
 
-    Es la SUMA de k variables geométricas, cada una generada por inversa
-    (4-125):  x_j = floor( ln(r_j) / ln(q) ).  Cuenta el número de fracasos
+    Es la SUMA de k variables geométricas, cada una generada por inversa:  x_j = floor( ln(r_j) / ln(q) ).  Cuenta el número de fracasos
     antes del k-ésimo éxito.   EX = k*q/p ,  VX = k*q/p^2   (q = 1 - p).
 
-    Nota: la forma compacta de Naylor (4-133) escribe x = floor(ln(PROD r_i)/ln q),
+    Nota: la forma compacta de Naylor escribe x = floor(ln(PROD r_i)/ln q),
     pero floor(suma) != suma(floor); esa versión truncada NO reproduce la
     binomial negativa (sesga la media). Por eso aquí se suman k geométricas
     truncadas individualmente, que es lo correcto.
@@ -140,13 +139,13 @@ def pascal(k, p):
     lnq = math.log(q)
     x = 0
     for _ in range(k):
-        x += int(math.log(u()) / lnq)     # geométrica (4-125)
+        x += int(math.log(u()) / lnq)     # geométrica
     return x
 
 
 # ----------------------------- BINOMIAL (n, p) -----------------------------
 def binomial(n, p):
-    """Reproducción de n ensayos de Bernoulli  (4-142, 4-143).
+    """Reproducción de n ensayos de Bernoulli.
 
     Cuenta cuántos de los n uniformes cumplen r_i <= p (éxitos).
     EX = n*p ,  VX = n*p*q.
@@ -160,7 +159,7 @@ def binomial(n, p):
 
 # ----------------------- HIPERGEOMÉTRICA (N, n, p) -------------------------
 def hipergeometrica(N, n, p):
-    """Muestreo SIN reemplazo  (4-147, 4-148).
+    """Muestreo SIN reemplazo.
 
     N = tamaño de la población, n = tamaño de la muestra,
     p = proporción inicial de la clase I (N*p elementos clase I).
@@ -183,7 +182,7 @@ def hipergeometrica(N, n, p):
 
 # ------------------------------ POISSON (lambda) ---------------------------
 def poisson(lam):
-    """Producto de uniformes comparado con e^(-lambda)  (4-153).
+    """Producto de uniformes comparado con e^(-lambda).
 
     Se multiplican uniformes mientras el producto sea >= e^(-lambda);
     x es la cantidad de multiplicaciones realizadas menos uno.
@@ -201,7 +200,7 @@ def poisson(lam):
 
 # --------------------------- EMPÍRICA DISCRETA -----------------------------
 def empirica(valores, probs):
-    """Transformación inversa sobre la función acumulada  (4-154).
+    """Transformación inversa sobre la función acumulada.
 
     Se busca el i tal que  P_1+..+P_{i-1} < r <= P_1+..+P_i  y se devuelve b_i.
     """
