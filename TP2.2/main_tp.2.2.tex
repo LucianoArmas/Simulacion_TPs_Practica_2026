@@ -1,0 +1,514 @@
+\documentclass{article}
+
+
+\usepackage{arxiv}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[spanish,es-tabla]{babel}
+
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xcolor} % Para colores
+\usepackage{multirow}
+
+\lstdefinestyle{miEstilo}{
+    language=Python,
+    backgroundcolor=\color{gray!10},
+    basicstyle=\ttfamily\footnotesize,
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!50!black},
+    stringstyle=\color{red},
+    breaklines=true,
+    showstringspaces=false,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+}
+\lstset{style=miEstilo}
+
+
+
+\title{TP 2.2 Generadores de Números Pseudoaleatorios de Distintas Distribuciones de Probabilidad}
+
+
+\author{
+ Tomás Lardizábal \\
+  Legajo 47433\\
+  Universidad Tecnológica Nacional - FRRO\\
+  Zeballos 1341, S2000, Argentina \\
+  \texttt{tlardizabal1@gmail.com} \\
+  %% examples of more authors
+   \And
+ Tomás Splivalo\\
+  Legajo 51665 \\
+  Universidad Tecnológica Nacional - FRRO\\
+  Zeballos 1341, S2000, Argentina \\
+  \texttt{tomassplivalo1@gmail.com} \\
+    \And
+ Luciano Armas\\
+  Legajo 47181\\
+  Universidad Tecnológica Nacional - FRRO\\
+  Zeballos 1341, S2000, Argentina \\
+  \texttt{lucianoarmas11@gmail.com} \\
+}
+
+\date{\today}
+\setlength{\itemsep}{0pt}
+\begin{document}
+\maketitle
+
+\pagestyle{fancy}
+\fancyhead{} % Elimina encabezado predeterminado
+\rhead{Generadores Pseudoaleatorios \today}
+
+\begin{abstract}
+A partir de un generador uniforme U(0, 1) se construyen generadores de variables aleatorias para nueve distribuciones de probabilidad (cuatro continuas y cinco discretas). Para cada distribución se presenta su formulación teórica, la derivación de la función acumulada y su inversa (cuando existe), el método de generación elegido (transformación inversa, rechazo o composición), la implementación en Python 3 y el testeo correspondiente. 
+La validación compara media y varianza teóricas contra las empíricas sobre N = 100.000 valores, obteniéndose errores relativos inferiores al \(1\%\) en todos los casos.
+\end{abstract}
+
+
+\section{Introducción}
+El de la librería Random de Python produce únicamente valores uniformes continuos en el rango (0, 1). El objetivo de este trabajo es transformar esa fuente para generar valores de otras distribuciones de probabilidad, tanto continuas como discretas, que abarcan buena parte de los fenómenos de interés en simulación
+
+Existen tres métodos básicos para generar valores de variable aleatoria a partir de la distribución uniforme: el de la \textbf{transformación inversa}, el de \textbf{rechazo} y el de \textbf{composición}. 
+
+Todos toman como insumo uno o más números r $\sim$ U(0, 1). En este informe la única primitiva de aleatoriedad es la función u(), y todos los demás generadores se construyen sobre ella.
+
+
+\subsection{Transformación Inversa}
+Si \textit{F(x)} es la función de distribución acumulada de X, como 0 $\leq$ \textit{F(x)} $\leq$ 1 se puede igualar r = \textit{F(x)} y despejar
+\begin{equation}
+x = F^{-1}(r),   \quad  0 \leq r \leq 1
+\end{equation}
+
+
+\subsection{Método de Rechazo}
+Sea \textit{f(x)} la función de densidad de probabilidad de X.
+Cuando \textit{f(x)} está acotada y \textit{x} tiene rango finito a $\leq$ \textit{x} $\leq$  b, se elige un factor de escala \textit{c} tal que \textit{c f(x)} $\leq$ 1 para todo x.
+Entonces se generan pares de uniformes r1, r2 $\sim$ U(0, 1) y se procede:
+
+\begin{equation}
+x = a + (b-a)r_1, \quad \text{Se acepta si } r_2 \leq cf[a+(b-a)r_1]
+\end{equation}
+
+En caso de que no se acepte el par, se vuelve a generar otro.
+
+El número esperado de intentos hasta aceptar es 1/c.
+
+
+\subsection{Método de Composición}
+Expresa la densidad como mezcla de densidades más simples $f(x) = \sum_{n} g_n(x)p_n$, y genera primero el índice n y luego un valor de la distribución $g_n(x)$.
+
+\subsection{Testeo}
+Para cada dsitribucion se generan N = 100.000 valores, se calcula su media (E(X)) y varianza (V(X)) empíricas, y se comparan contra las teóricas.
+En las discretas se agrega ademas el estadístico de chi-cuadrado $\chi^2=\sum \frac{(O_i - E_i)^2}{E_i}$ entre frecuencias observadas y esperadas.
+
+
+\section{Distribuciones Continuas}
+
+
+\subsection{Uniforme}
+Es la densidad más simple: constante en \textit{(a, b)} y nula fuera. Surge, por ejemplo, en los errores de redondeo. Su densidad y acumulada son
+\begin{equation}
+f(x) = \frac{1}{b-a}, \quad F(x) = \int_{a}^{x} \frac{1}{b-a} dx = \frac{x-a}{b-a}
+\end{equation}
+
+con media \textit{E(X)} = $\frac{a+b}{2}$ y varianza \textit{V(X)} = $\frac{(b-a)^{2}}{12}$.
+
+\textbf{Inversa}. Despejando $r = \frac{x-a}{b-a}$, se obtiene:
+\begin{equation}
+x = a + (b-a)r.
+\end{equation}
+
+\textbf{Rechazo}. Como \textit{f} es constante, con $c=b-a$ resulta $c f(x) = 1$ para todo $x$, la pareja siempre se acepta. El rechazo es válido pero no aporta eficiencia aquí.
+
+\begin{lstlisting}
+def uniforme_inversa(a, b):
+  return a + (b - a) * u() # x = a + (b-a)*r
+
+def uniforme_rechazo(a, b):
+  c, f = b - a, 1.0 / (b - a)
+  while True:
+    r1, r2 = u(), u()
+    x = a + (b - a) * r1
+    if r2 <= c * f: # c*f(x) = 1 -> siempre acepta
+      return x
+\end{lstlisting}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.8\linewidth]{figuras/dist_uniforme.png}
+    \caption{Distribución Uniforme (a=2, b=8), histograma empírico vs. densidad teórica.}
+    \label{fig:dist_uniforme}
+\end{figure}
+
+
+
+\subsection{Exponencial}
+Modela el intervalo de tiempo entre ocurrencias de eventos raros e independientes (llegadas, fallas, etc.). Su densidad y acumulada:
+
+\begin{equation}
+f(x) = \alpha e^{-\alpha x}, x \geq 0 \quad F(x) = 1 - e^{-\alpha x}
+\end{equation}
+
+con media \textit{E(X)} = $\frac{1}{\alpha}$ y varianza \textit{V(X)} = $\frac{1}{\alpha^2}$.
+
+\textbf{Inversa}. Por la intercambiabilidad entre $F(x)$ y $1-F(x)$, se toma $r = e^{-\alpha x}$ de donde:
+
+\begin{equation}
+x = -\frac{1}{\alpha} \ln(r) = -E(x) \ln(r)
+\end{equation}
+
+\textbf{Rechazo (Von Neumann)}. Alternativa que evita el logaritmo. Genera corridas decrecientes de uniformes y acepta según su paridad.
+
+
+\begin{lstlisting}
+def exponencial_inversa(ex):
+  return -ex * math.log(u()) # x = -EX*ln(r)
+
+def exponencial_von_neumann(ex=1.0):
+  k = 0
+  while True:
+    u0 = u(); actual = u0; largo = 1
+    while True:
+      sig = u()
+      if sig >= actual: break # primer ascenso: corta la corrida
+      actual = sig; largo += 1
+    if largo % 2 == 1: # largo impar -> aceptar
+      return ex * (k + u0)
+    k += 1
+\end{lstlisting}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.8\linewidth]{figuras/dist_exponencial.png}
+    \caption{Distribución Exponencial: histograma empírico vs. densidad teórica.}
+    \label{fig:dist_exponencial}
+\end{figure}
+
+
+
+
+\subsection{Gamma (Erlang)}
+Si un proceso consta de $k$ eventos sucesivos y el tiempo total es la suma de $k$ exponenciales con mismo parámetro $\alpha$, la suma sigue una distribución gamma de parámetros $\alpha$ y $k$ (Erlang, con $k$ entero). Su densidad:
+
+\begin{equation}
+f(x) = \frac{\alpha^k x^{k-1} e^{-\alpha x}}{(k-1)!}, \quad E(x)=\frac{k}{\alpha}, \quad V(x)=\frac{k}{\alpha^2}
+\end{equation}
+
+No posee acumulada explícita, por lo que no se aplica la inversa directa. Para k entero se reproduce el proceso de Erlang sumando k exponenciales:
+
+\begin{equation}
+x = \sum_{i=1}^{k} x_i = -\frac{1}{\alpha} \ln\left(\prod_{i=1}^{k} r_i\right)
+\end{equation}
+
+Los parámetros se derivan de $E(X)$ y $V(X)$, mediante $\alpha = \frac{E(X)}{V(X)}$ y $k = \frac{E(X)^2}{V(X)}$.
+
+
+\begin{lstlisting}
+def gamma_erlang(alpha, k): # k entero positivo
+  prod = 1.0
+  for _ in range(k):
+    prod *= u()
+  return -math.log(prod) / alpha # x = -(1/alpha)*ln(prod r_i)
+\end{lstlisting}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.8\linewidth]{figuras/dist_gamma.png}
+    \caption{Gamma/Erlang con $\alpha=2$ y $k=4$ ($E(X)=2$, $V(X)=1$).}
+    \label{fig:dist_gamma}
+\end{figure}
+
+
+
+\subsection{Normal}
+La densidad normal es:
+
+\begin{equation}
+f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}, \quad E(X)=\mu, \quad V(X)=\sigma^2
+\end{equation}
+
+No posee acumulada explícita.
+
+
+\textbf{Método del límite central} ($K=12$). La suma de $K$ uniformes tiende a una normal. Con $K=12$:
+
+\begin{equation}
+x = \sigma \left(\sum_{i=1}^{12} r_i - 6\right) + \mu
+\end{equation}
+
+La elección $K=12$ evita la multiplicación por $\sqrt{K/12}$ pero trunca la cola a $\pm$ 6$\sigma$.
+
+
+\textbf{Procedimiento directo (Box-Muller)}. Resutlado exacto a partir de dos uniformes.:
+
+\begin{equation}
+  x = \sigma \sqrt{-2 \ln(r_1)} \cos(2\pi r_2) + \mu
+\end{equation}
+
+
+\begin{lstlisting}
+def normal_limite_central(mu, sigma): # K = 12
+  s = sum(u() for _ in range(12))
+  return sigma * (s - 6.0) + mu
+
+def normal_box_muller(mu, sigma): # directo, exacto
+  r1, r2 = u(), u()
+  z = math.sqrt(-2.0 * math.log(r1)) * math.cos(2.0 * math.pi * r2)
+  return mu + sigma * z
+\end{lstlisting}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.8\linewidth]{figuras/dist_normal.png}
+    \caption{Normal ($\mu=10$, $\sigma=2$) por Box-Muller vs. densidad teórica.}
+    \label{fig:dist_normal}
+\end{figure}
+
+
+
+
+
+
+
+\section{Distribuciones Discretas}
+para una variable discreta, $F(x) = \sum_{X = 0}^x f(X)$ es escalonada y $f(x) = P(X = x)$ es la probabilidad puntual.
+
+\subsection{Pascal (binomial negativa)}
+Cuando los ensayos de Bernoulli se repiten hasta lograr $k$ éxitos, el número de fracasos sigue una binomial negativa; con $k$ entero recibe el nombre de distribución de Pascal. Su función de probabilidad y momentos:
+
+\begin{equation}
+f(x) = \binom{x+k-1}{x} p^k q^x, \quad E(X) = \frac{kq}{p}, \quad V(X) = \frac{kq}{p^2}
+\end{equation}
+
+La variable de Pascal es la suma de $k$ variables geométricas, cada una generada por inversa: $x_j = \lfloor \frac{\ln(r_j)}{\ln(q)} \rfloor$.
+
+\begin{lstlisting}
+def pascal(k, p):
+  q = 1.0 - p
+  lnq = math.log(q)
+  x = 0
+  for _ in range(k):
+    x += int(math.log(u()) / lnq) # geometrica: floor(ln r / ln q)
+  return x
+\end{lstlisting}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.8\linewidth]{figuras/dist_pascal.png}
+    \caption{Pascal(k=3, p=0.4): frecuencia empírica vs. probabilidad teórica.}
+    \label{fig:dist_pascal}
+\end{figure}
+
+
+
+\subsection{Binomial}
+Cuenta los éxitos en $n$ ensayos de Bernoulli independientes con probabilidad $p$:
+
+\begin{equation}
+f(x) = \binom{n}{x} p^x q^{n-x}, \quad E(X) = np, \quad V(X) = npq
+\end{equation}
+
+El método más simple reproduce los n ensayos e incrementa x cada vez que $r_i$ $\leq$ $p$.
+
+\begin{lstlisting}
+def binomial(n, p):
+  x = 0
+  for _ in range(n):
+    if u() <= p: # exito
+      x += 1
+  return x
+\end{lstlisting}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.8\linewidth]{figuras/dist_binomial.png}
+    \caption{Binomial(n=20, p=0.3): frecuencia empírica vs. probabilidad teórica.}
+    \label{fig:dist_binomial}
+\end{figure}
+
+
+
+
+\subsection{Hipergeométrica}
+Surfe del muestreo sin reemplazo de $n$ elementos de una población de $N$ elementos, de los cuales $Np$ son de la clase $I$ (éxito):
+
+\begin{equation}
+f(x) = \frac{\binom{Np}{x} \binom{Nq}{n-x}}{\binom{N}{n}}, \quad E(X) = np, \quad V(X) = npq \frac{N-n}{N-1}
+\end{equation}
+
+Se altera el método de Bernoulli: tras extraer el elemento $i$, la proporción de la clase $I$ y el tamaño se actualizan de forma dependiente.
+
+\begin{equation}
+p_i = \frac{N_{i-1}p_{i-1} - S}{N_{i-1} - 1}, \quad N_i = N_{i-1} - 1,
+\end{equation}
+
+con S = 1 si la última extracción fue de la clase $I$ y S = 0 en caso contrario
+
+
+\begin{lstlisting}
+def hipergeometrica(N, n, p):
+  TN, P, x = float(N), p, 0
+  for _ in range(n):
+    if u() <= P: # se extrae un elemento de clase I
+      S = 1.0; x += 1
+    else:
+      S = 0.0
+    P = (TN * P - S) / (TN - 1.0) # nueva proporcion
+    TN -= 1.0 # un elemento menos
+  return x
+\end{lstlisting}
+
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.8\linewidth]{figuras/dist_hipergeometrica.png}
+    \caption{Hipergeométrica(N=50, n=10, p=0.4): frecuencia empírica vs. probabilidad teórica.}
+    \label{fig:dist_hipergeometrica}
+\end{figure}
+
+
+
+
+\subsection{Poisson}
+Describe el número de ocurrencias de un evento en un intervalo, con $\lambda$ = np cuando n → $\infty$ y p → 0:
+
+\begin{equation}
+f(x) = e^{-\lambda} \frac{\lambda^x }{x!}, \quad E(X) =  V(X) = \lambda
+\end{equation}
+
+Aprovechando la relación entre la exponencial y Poisson, se generan intervalos exponenciales hasta superar $\lambda$; equivalentemente
+
+Se multiplican uniformes mientras el producto sea mayor o igual que $e^{-\lambda}$
+
+
+\begin{lstlisting}
+def poisson(lam):
+  B = math.exp(-lam)
+  tr, x = 1.0, 0
+  while True:
+    tr *= u()
+    if tr < B: # producto < e^{-lambda}
+      return x
+    x += 1
+\end{lstlisting}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.8\linewidth]{figuras/dist_poisson.png}
+    \caption{Poisson($\lambda=4$): frecuencia empírica vs. probabilidad teórica.}
+    \label{fig:dist_poisson}
+\end{figure}
+
+
+
+
+
+\subsection{Empírica Discreta}
+Cuando no se dispone de una distribución teórica, se trabaja con una tabla P(X = $b_i$) = $p_i$. Por transformación inversa sobre la acumulada se devuelve $b_i$ tal que
+
+\begin{equation}
+p_1 + p_2 + ... + p_i \geq r > p_1 + p_2 + ... + p_{i-1}
+\end{equation}
+
+Aprovechando la relación entre la exponencial y Poisson, se generan intervalos exponenciales hasta superar $\lambda$; equivalentemente
+
+Se multiplican uniformes mientras el producto sea mayor o igual que $e^{-\lambda}$
+
+
+\begin{lstlisting}
+def empirica(valores, probs):
+  r, acum = u(), 0.0
+  for v, pr in zip(valores, probs):
+    acum += pr
+    if r <= acum:
+      return v
+  return valores[-1] # proteccion por redondeo
+\end{lstlisting}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.8\linewidth]{figuras/dist_empirica.png}
+    \caption{Empírica Discreta: frecuencia empírica vs. probabilidad teórica.}
+    \label{fig:dist_empirica}
+\end{figure}
+
+
+
+
+\section{Testeo y validación}
+La Tabla 1 resume la validación sobre N = 100.000 valores por generador. El criterio adoptado: media y varianza empíricas dentro del \(3\%\) y \(6\%\) del valor teórico respectivamente. 
+
+Todas las distribuciones cumplen, con errores relativos por debajo del \(1\%\). Para las discretas, los valores de $\chi^2$ obtenidos son compatibles con sus grados de libertad, lo que respalda el buen ajuste a la función de probabilidad teórica.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{|l|l|ccc|ccc|c|}
+\hline
+\textbf{Distribución} & \textbf{Método} &
+\multicolumn{3}{c|}{\textbf{Media (EX)}} &
+\multicolumn{3}{c|}{\textbf{Varianza (VX)}} &
+\multirow{2}{*}{$\chi^2$} \\
+
+\cline{3-8}
+ & &
+\textbf{Teór.} & \textbf{Emp.} & \textbf{Err.} &
+\textbf{Teór.} & \textbf{Emp.} & \textbf{Err.} & \\
+
+\hline
+Uniforme(2,8)         & Inversa         & 5.0000 & 4.9942 & 0.12\% & 3.0000 & 2.9954 & 0.15\% & -- \\
+Uniforme(2,8)         & Rechazo         & 5.0000 & 4.9891 & 0.22\% & 3.0000 & 2.9985 & 0.05\% & -- \\
+Exponencial(EX=3)     & Inversa         & 3.0000 & 3.0023 & 0.08\% & 9.0000 & 9.0146 & 0.16\% & -- \\
+Exponencial(EX=3)     & Von Neumann     & 3.0000 & 2.9971 & 0.10\% & 9.0000 & 8.9527 & 0.53\% & -- \\
+Gamma(EX=2,VX=1)      & Suma k exp.     & 2.0000 & 1.9948 & 0.26\% & 1.0000 & 0.9905 & 0.95\% & -- \\
+Normal(10,2)          & Limite central  & 10.0000 & 9.9892 & 0.11\% & 4.0000 & 4.0077 & 0.19\% & -- \\
+Normal(10,2)          & Box-Muller      & 10.0000 & 9.9964 & 0.04\% & 4.0000 & 3.9756 & 0.61\% & -- \\
+Pascal(k=3,p=0.4)     & Suma k geom.    & 4.5000 & 4.5074 & 0.16\% & 11.2500 & 11.2980 & 0.43\% & 37.68 \\
+Binomial(20,0.3)      & Bernoulli       & 6.0000 & 6.0081 & 0.13\% & 4.2000 & 4.2121 & 0.29\% & 9.18 \\
+Hipergeom.(50,10,0.4) & Sin reemplazo   & 4.0000 & 3.9983 & 0.04\% & 1.9592 & 1.9485 & 0.54\% & 9.07 \\
+Poisson($\lambda=4$)  & Prod. uniformes & 4.0000 & 4.0063 & 0.16\% & 4.0000 & 4.0016 & 0.04\% & 8.75 \\
+Empírica              & Inversa acum.   & 4.4410 & 4.4404 & 0.01\% & 8.6945 & 8.6955 & 0.01\% & 0.25 \\
+\hline
+\end{tabular}
+\caption{Resultados del testeo: teórico vs. empírico (N = 100.000)}
+\label{tab:comparacion_distribuciones}
+\end{table}
+
+
+\section{Conclusiones}
+Se implementaron generadores para nueve distribuciones a partir de una única fuente uniforme. La transformación inversa resultó el método más directo y eficiente donde $F^{-1}$ es conocida (uniforme, exponencial, Pascal, empírica); para distribuciones sin acumulada explícita se recurrió a la reproducción del proceso subyacente (gamma como suma de exponenciales, normal por el límite central y por Box-Muller, binomial e hipergeométrica por ensayos de Bernoulli, Poisson por su vínculo con la exponencial). El testeo estadístico confirma que todos los generadores reproducen con alta fidelidad la media, la varianza y la forma de las distribuciones objetivo.
+
+
+
+
+
+\bibliographystyle{unsrt}  
+
+
+\renewcommand{\refname}{Bibliografía}
+
+\begin{thebibliography}{1}
+
+
+\bibitem{referencia3}
+Naylor, T. H. Técnicas de Simulación en Computadoras. Limusa, 1982. (Cap. 4: Generación de valores de las variables estocásticas empleadas en simulación.)\\
+
+
+
+\end{thebibliography}
+
+
+\end{document}

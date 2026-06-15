@@ -296,7 +296,7 @@ def graficar_y_guardar(muestra, titulo, nombre_archivo, es_continua=True, x_teor
         # density=True hace que el área total sea 1, permitiendo comparar con la FDP teórica
         plt.hist(muestra, bins=50, density=True, alpha=0.6, color='steelblue', edgecolor='white', label='Empírico (Muestra)')
         if x_teorico and y_teorico:
-            plt.plot(x_teorico, y_teorico, color='darkorange', linewidth=2, label='Teórico (FDP)')
+            plt.plot(x_teorico, y_teorico, color='darkorange', linewidth=2, label='Teórica f(x)')
     else:
         # Para discretas calculamos la proporción real de cada entero observado
         valores_unicos = sorted(list(set(muestra)))
@@ -310,7 +310,7 @@ def graficar_y_guardar(muestra, titulo, nombre_archivo, es_continua=True, x_teor
             x_teo = [v + ancho/2 for v in x_teorico]
             
             plt.bar(x_emp, frec_relativas, alpha=0.7, color='seagreen', edgecolor='white', width=ancho, label='Empírico (Muestra)')
-            plt.bar(x_teo, y_teorico, alpha=0.7, color='darkorange', edgecolor='white', width=ancho, label='Teórico (PMF)')
+            plt.bar(x_teo, y_teorico, alpha=0.7, color='darkorange', edgecolor='white', width=ancho, label='Teórica P(x)')
         else:
             # Comportamiento por defecto si no hay teórico
             plt.bar(valores_unicos, frec_relativas, alpha=0.7, color='seagreen', edgecolor='white', width=ancho, label='Empírico (Muestra)')
@@ -373,8 +373,8 @@ def main():
     histograma_continua(m_inv)
     
     
-    x_t = [a, a, b, b]
-    y_t = [0, 1.0/(b-a), 1.0/(b-a), 0]
+    x_t = [a, b]
+    y_t = [1.0 / (b - a), 1.0 / (b - a)]
     graficar_y_guardar(m_inv, "Distribución Uniforme (a=2, b=8)", "dist_uniforme.png", True, x_t, y_t)
 
     # ---------------- EXPONENCIAL ----------------
